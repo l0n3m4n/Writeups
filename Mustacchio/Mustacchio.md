@@ -95,7 +95,7 @@ Finished
 
 ```
 ## Hidden file
-> always explore in hidden directories etc.
+> always explore hidden directories etc.
 ```bash
 $ curl http://mustacchio.thm/custom/users.bak -o users.bak 
 
