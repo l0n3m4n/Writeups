@@ -221,7 +221,7 @@ $ curl http://mustacchio.thm:8765/auth/dontforget.bak -o barry.bak
   <com>&xxe;</com>
 </comment>
 ```
-> Burpsuite toturial ![free Udemy](#https://www.udemy.com/course/mastering-burp-suite/?srsltid=AfmBOorTKbmBVMgEXvSt9Fgo66sRaZCq2F65tdCL4CoaZ0EhqQrYSTxt)
+> Burpsuite tutorial ![free course Udemy ](#https://www.udemy.com/course/mastering-burp-suite/?srsltid=AfmBOorTKbmBVMgEXvSt9Fgo66sRaZCq2F65tdCL4CoaZ0EhqQrYSTxt)
 ![burp](burp.png)
 
 ## SSH Cracking
