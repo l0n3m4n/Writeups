@@ -168,7 +168,7 @@ Hardware.Mon.#1..: Temp: 52c Util: 21%
 ```
 ![admin-panel](admin-panel.png)
 
-## Extracting another bak file
+## Extracting another .bak file
 > found in view-source page and try to search curl cheatsheets
 ```bash
 $ curl http://mustacchio.thm:8765/auth/dontforget.bak -o barry.bak
@@ -326,6 +326,7 @@ $ barry@mustacchio:/home/joe$ ./live_log
 
 ```
 ## Investigating printable strings
+> Linux builtin tools ![tutorials](#https://www.tutorialspoint.com/unix_commands/builtin.htm)
 ```bash
 $ barry@mustacchio:/home/joe$ strings live_log
 /lib64/ld-linux-x86-64.so.2
