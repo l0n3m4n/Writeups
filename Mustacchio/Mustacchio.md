@@ -21,7 +21,7 @@
 
 ## Flags
 - **User**: 62d77a4d5f9{REDACTED}b2651b831
-- **Root**: 
+- **Root**: 3223581420d{REDACTED}f9b530393a5
 
 ## Recon
 > the beginning of pentesting phase 
