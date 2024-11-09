@@ -1,4 +1,4 @@
-<h1 align="center">🚩 THM - CTF Challenges 🚩</h1>
+<h1 align="center">🚩 CTF Challenges 🚩</h1>
  <br>
 <p align="center">
      <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fl0n3m4n%tryhackme-rooms">
@@ -21,7 +21,7 @@
 
 <h1 align="center">
         <samp>&gt; 
-                <b><a target="_blank" href="https://tryhackme.com">THM</a></b>
+                <b><a target="_blank" href="https://tryhackme.com">Writeups</a></b>
         </samp>
 </h1>
 
