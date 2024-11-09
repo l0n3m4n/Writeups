@@ -1,5 +1,5 @@
 
-# THM [Mustacchio](#https://tryhackme.com/r/room/mustacchio) (Novice writeup) 
+# THM ![Mustacchio](#https://tryhackme.com/r/room/mustacchio) (Novice writeup) 
 - **Description**: Easy boot2root Machine
 - **Level**: easy
 - **Category**: Web/Linux
