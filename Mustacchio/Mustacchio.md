@@ -4,7 +4,7 @@
 - **Level**: easy
 - **Category**: Web/Linux
 
-### Note: This write-up is intended to simulate a lack of understanding of how actual hacking works you know kinda 'I have no idea'. LOL
+#### **Note**: This write-up is intended to simulate a lack of understanding of how actual hacking works you know kinda 'I have no idea'. LOL
 
 ## Hacking phases
 - Reconnaissance
