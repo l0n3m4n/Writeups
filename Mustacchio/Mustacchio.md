@@ -288,7 +288,7 @@ barry@mustacchio:~$
 ```
 ## Privilege Escalation
 > googling: privilege escalation using find 
-- Since curl and wget are not working on the target machine, we can't transfer `LinPEAS` to the machine. Therefore, let's perform the transfer manually using `find`.
+- Since curl and wget are not working on the target machine, we can't transfer `LinPEAS` to the machine. Therefore, let's perform manual testing using `find`.
 ```bash
 $ find / -type f -perm -u=s 2> /dev/null
 /usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
