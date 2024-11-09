@@ -27,6 +27,15 @@
 > the beginning of pentesting phase 
 ![recon](recon.png)
 
+## Adding host
+```bash
+$ echo "10.10.2.145 mustacchio.thm" | sudo tee -a /etc/hosts
+
+# verify host
+$ curl -I http:// mustacchio.thm
+or 
+$ ping -c 3 mustacchio.thm
+```
 
 ## Nmap tcp scanning
 ```bash
