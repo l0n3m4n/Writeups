@@ -403,7 +403,7 @@ live_log
 
 ## Path Hijacking (Privilege escalation)
 ### Methodology 
-**Question**: Since i'm f*cking noob, and I'm trying to understand how tail became a target for PATH hijacking, I wanted to figure out how to determine if a machine is vulnerable to it. So what I did, I checked in TryHackMe hint, and it pointed me towards a SUID (Set User ID) binary. That got me thinking what the heck is that, so I figured out by googling about ![SUID privilege escalation](#https://www.prplbx.com/resources/blog/linux-privilege-escalation-with-path-variable-suid-bit/) but first I wanted to understand what is ![PATH hijacking](#https://www.hackingarticles.in/linux-privilege-escalation-using-path-variable/) anyway.
+**Question**: Since i'm f*cking noob, and I'm trying to understand how tail became a target for PATH hijacking, I wanted to figure out how to determine if a machine is vulnerable to it. So what I did, I checked in TryHackMe hint, and it pointed me towards a SUID (Set User ID) binary. That got me thinking what the heck is that, so I figured out by googling about [SUID privilege escalation](https://www.prplbx.com/resources/blog/linux-privilege-escalation-with-path-variable-suid-bit/) but first I wanted to understand what is [PATH hijacking](https://www.hackingarticles.in/linux-privilege-escalation-using-path-variable/) anyway.
 
 Here’s what I did:
   - First, I checked how the `tail -f /var/log/nginx/access.log` command works, so it is essentially monitors the NGINX log file in real-time every time we run the `live_log` binary it also a create file and append to current `access.log` file.
