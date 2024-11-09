@@ -225,7 +225,7 @@ $ curl http://mustacchio.thm:8765/auth/dontforget.bak -o barry.bak
 ![burp](burp.png)
 
 ## SSH Cracking
-> googling, how to crack ssh key?
+> father google: how to crack ssh key?
 ```bash
 $ cat id_rsa      
  -----BEGIN RSA PRIVATE KEY-----
