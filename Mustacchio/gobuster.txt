@@ -1,0 +1,7 @@
+/.htpasswd           [33m (Status: 403)[0m [Size: 279]
+/.htaccess           [33m (Status: 403)[0m [Size: 279]
+/custom              [36m (Status: 301)[0m [Size: 317][34m [--> http://mustacchio.thm/custom/][0m
+/fonts               [36m (Status: 301)[0m [Size: 316][34m [--> http://mustacchio.thm/fonts/][0m
+/images              [36m (Status: 301)[0m [Size: 317][34m [--> http://mustacchio.thm/images/][0m
+/robots.txt          [32m (Status: 200)[0m [Size: 28]
+/server-status       [33m (Status: 403)[0m [Size: 279]
