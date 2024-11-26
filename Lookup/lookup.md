@@ -173,7 +173,7 @@ IP address #1: 10.10.69.10
 ```
 
 ```bash
-$ echo "10.10.160.51 lookup.thm www.lookup.thm" | tee -a /etc/hosts
+$ echo "10.10.160.51 lookup.thm www.lookup.thm files.lookup.thm" | suod tee -a /etc/hosts
 ```
 
 ## Basic authentication 
