@@ -512,7 +512,7 @@ So what we can do is use the UID of `think` user to extract the contents of `.pa
 For example, we can create a script similar to the original binary `id` and save in `tmp` directory. so that every time we execute the `pwm binary`, it will extract the contents.
 In our script created, here an example of think uid `uid=1000 (think) gid=1000 (think) groups=1000 (think)`.
 
-## Path variable / Path hijacking
+## Manipulating Path variable 
 - **I encounter error while pasting command**: `bash: !/bin/bash\nuid=1000: event not found`
   - **Fix**: temporarily disable `history expansion` by setting the `HISTCONTROL` variable: **set +H**
 ```bash
