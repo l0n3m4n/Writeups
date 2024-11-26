@@ -9,6 +9,7 @@
 - **Inital Foothold**
 - **Privilege Escalation**
 
+## Summary
 <br>
 <p>It took me over 8 (6+2) hours to complete this boot2root machine and finish the writeup. It was really exhausting, but I learned a lot. Through creating writeups, I recalled and applied my knowledge while working on other machines.
 Thanks for visiting my writeups,<br>enjoy reading ✌️ LOL!</p>
