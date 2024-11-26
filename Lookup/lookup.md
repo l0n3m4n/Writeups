@@ -1,5 +1,7 @@
 ![lookup](lookup.jpeg)
 
+It took me over 8 (6+2) hours to complete this boot2root machine and finish the writeup. It was really exhausting, but I learned a lot, Through creating writeups helped me recall and apply my knowledge while playing on other machine. Thanks for visiting my writeups, enjoy reading ✌️ LOL!
+
 ## Flags
 - **User flag**: 38375fb4dd8{REDACTED}ac03d92b820e
 - **Root flag**: 5a285a9f257{REDACTED}a9f9f57d18e8
@@ -609,4 +611,4 @@ Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-156-generic x86_64)
 ...
 root@lookup:~# 
 ```
-It took me over 8 (6+2) hours to complete this boot2root machine and finish the writeup. It was really exhausting, but I learned a lot, Through creating writeups helped me recall and apply my knowledge while playing on other machine. Thanks for visiting my writeups, enjoy reading ✌️ LOL!
+
