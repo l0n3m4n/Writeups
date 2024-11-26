@@ -1,6 +1,6 @@
 ![lookup](lookup.jpeg)
 
-It took me over 8 (6+2) hours to complete this boot2root machine and finish the writeup. It was really exhausting, but I learned a lot, Through creating writeups helped me recall and apply my knowledge while playing on other machine. Thanks for visiting my writeups, enjoy reading ✌️ LOL!
+**It took me over 8 (6+2) hours to complete this boot2root machine and finish the writeup. It was really exhausting, but I learned a lot, Through creating writeups helped me recall and apply my knowledge while playing on other machine. Thanks for visiting my writeups, enjoy reading ✌️ LOL!**
 
 ## Flags
 - **User flag**: 38375fb4dd8{REDACTED}ac03d92b820e
