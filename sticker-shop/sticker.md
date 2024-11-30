@@ -3,7 +3,7 @@
 <br>
 <br>
 
-If a website has a `"Submit Feedback"` functionality and is using a Python-based server, several common vulnerabilities could be present depending on how the server processes and handles user input.
+If a website has a `"Submit Feedback"` functionality and using a Python-based server, several common vulnerabilities could be present depending on how the server processes and handles user input.
 1. Cross-Site Scripting (XSS)
     - Cause: Improper validation and sanitization of user input.
     - Impact: Attackers can inject malicious JavaScript that executes in the browser of other users.
@@ -15,7 +15,6 @@ If a website has a `"Submit Feedback"` functionality and is using a Python-based
     - Mitigation: Use parameterized queries or ORM methods like SQLAlchemy.
 
 3. Server-Side Template Injection (SSTI)
-
     - Cause: User input is rendered directly in server-side templates without proper sanitization.
     - Impact: Remote code execution if malicious payloads are evaluated.
     - Mitigation: Use a template engine that escapes variables by default (e.g., Jinja2 with autoescaping).
