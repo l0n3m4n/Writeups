@@ -3,7 +3,7 @@
 <br>
 <br>
 
-Example of web applications and web pages where blind XSS attacks can occur:
+- Example of web applications and web pages where blind XSS attacks can occur:
 	- Contact/Feedback pages
     	- Log viewers
     	- Exception handlers
