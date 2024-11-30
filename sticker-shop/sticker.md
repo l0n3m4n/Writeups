@@ -1,7 +1,6 @@
 ![thm](thm-writeup.png)
 
-<br>
-<br>
+
 
 - Example of web applications and web pages where blind XSS attacks can occur:
 	- Contact/Feedback pages
