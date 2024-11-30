@@ -3,6 +3,16 @@
 <br>
 <br>
 
+- Example of web applications and web pages where blind XSS attacks can occur:
+	- Contact/Feedback pages
+    	- Log viewers
+    	- Exception handlers
+    	- Chat applications / forums
+    	- Customer ticket applications
+    	- Web Application Firewalls
+    	- Any application that requires user moderation
+
+
 If a website has a `"Submit Feedback"` functionality and using a Python-based server, several common vulnerabilities could be present depending on how the server processes and handles user input.
 1. Cross-Site Scripting (XSS)
     - Cause: Improper validation and sanitization of user input.
