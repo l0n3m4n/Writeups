@@ -290,7 +290,8 @@ I didn't find anything useful in the LinPEAS results, so I decided to check the 
 
 ![crons](crons.png)
 
-## Privilege escalation
+# Privilege escalation
+## module hijacking 
 ```bash
 valley@valley:~$ find / -type f -perm -775 -exec ls -al {} \; 2>/dev/null
 
