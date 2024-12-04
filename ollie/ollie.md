@@ -276,7 +276,7 @@ Password: OllieUnixMontgomery!
 ## Vulnerability Identification
 > I tried multiple times using this automated script, but it didn't work. After searching, I found that manual exploitation works using the steps below.
 ```bash
-$ PHPIPAM 1.4.4 - SQLi (Authenticated)         					|	https://www.exploit-db.com/exploits/50684
+$ PHPIPAM 1.4.4 - SQLi (Authenticated)				|	https://www.exploit-db.com/exploits/50684
 $ phpIPAM 1.4.5 - Remote Code Execution (RCE) (Authenticated) 	| 	https://www.exploit-db.com/exploits/50963
 ```
 ## Exploit details
