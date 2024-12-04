@@ -283,7 +283,8 @@ PS: Good luck and next time bring some treats!
 Username: admin
 Password: OllieUnixMontgomery!
 ```
-> An Indication of login successfull
+> An indication of login successful 
+
 ![burp](burp.png)
 ![dashboard](dashboard.png)
 
