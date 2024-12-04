@@ -1,5 +1,6 @@
 ![ollie](ollie.png)
 
+<br>
 
 **This box is marked as "Medium" on TryHackMe, but honestly, it felt more like "Easy" except for the time I wasted on the PoC. At first, I thought it worked, but it turned out to be just a rabbit hole. During our enumeration phase with Nmap, we discovered several interesting ports. One of them, port 1337, served as our entry point to a login page at ollie.thm.**
 
