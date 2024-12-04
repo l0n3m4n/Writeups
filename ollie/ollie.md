@@ -9,7 +9,7 @@
 **After Running LinPEAS, the most interesting thing we found was that the current user had permissions to view /var/log/auth.log.1,which stood out. This is likely a misconfiguration since ollie is just a regular user, and the group that grants access to system logs is usually meant for admins only.**
 
 
- where we noticed a suspicious `cron` job. To confirm, we used `pspy32` to check if there was any exploitable script running. Sure enough, there was—and we successfully escalated to root. enjoy reading :)**
+**where we noticed a suspicious `cron` job. To confirm, we used `pspy32` to check if there was any exploitable script running. Sure enough, there was—and we successfully escalated to root. enjoy reading :)**
 
 <br>
 
