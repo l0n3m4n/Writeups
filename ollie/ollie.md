@@ -1,5 +1,16 @@
 ![ollie](ollie.png)
 
+<br>
+
+This box is marked as "Medium" on TryHackMe, but honestly, it felt more like "Easy" except for the time I wasted on the PoC. At first, I thought it worked, but it turned out to be just a rabbit hole. During our enumeration phase with Nmap, we discovered several interesting ports. One of them, port 1337, served as our entry point to a login page at ollie.thm.
+
+From there, we searched for exploits and found two vulnerable versions: 1.4.4 and 1.4.5. However, neither PoC we tried worked. After some digging, we came across an article that detailed a manual approach. We followed it, and boom we got initial access.
+
+Next up was privilege escalation. Running LinPEAS, the most interesting thing we found was that the `adm` group had permissions to view the current user. This led us to `/var/log/auth.log.1`, where we noticed a suspicious `cron` job. To confirm, we used `pspy32` to check if there was any exploitable script running. Sure enough, there was—and we successfully escalated to root. enjoy reading :)
+
+<br>
+
+
 ## Service Detection
 ```bash
 $ nmap -sC -sV -p$(nmap --min-rate=2000 -T4 -p- ollie.thm | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed 's/,$//') ollie.thm -oN tcp.txt 
