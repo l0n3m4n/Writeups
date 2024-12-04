@@ -6,7 +6,7 @@
 
 **From there, we searched for exploits and found two vulnerable versions: 1.4.4 and 1.4.5. However, neither PoC we tried worked. After some digging, we came across an article that detailed a manual approach. We followed it, and boom we got initial access.**
 
-**Running LinPEAS, the most interesting thing we found was that the current user had permissions to view /var/log/auth.log.1,which stood out. This is likely a misconfiguration since ollie is just a regular user, and the group that grants access to system logs is usually meant for admins only.**
+**After Running LinPEAS, the most interesting thing we found was that the current user had permissions to view /var/log/auth.log.1,which stood out. This is likely a misconfiguration since ollie is just a regular user, and the group that grants access to system logs is usually meant for admins only.**
 
 
  where we noticed a suspicious `cron` job. To confirm, we used `pspy32` to check if there was any exploitable script running. Sure enough, there was—and we successfully escalated to root. enjoy reading :)**
