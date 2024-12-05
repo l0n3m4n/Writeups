@@ -244,7 +244,7 @@ THM{k@l1_redacted_v@lley}
 
 ```
 ## Reverse Engineering 
-I don’t know why the user is using an authenticator binary because, in real life, that seems unlikely to happen. But since this is just a challenge, the creator of the box probably put it there on purpose. Let’s reverse it and see if we can find something useful.
+I don’t know why the user is using an authenticator and putting is his home directory, because in real life, that seems unlikely to happen. But since this is just a challenge, the creator of the box probably put it there on purpose. Let’s reverse it and see if we can find something useful.
 
 ```bash
 valleyDev@valley:/home$ ls
