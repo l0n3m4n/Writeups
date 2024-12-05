@@ -1,5 +1,12 @@
 ![thm](thm-writeup.png)
 
+<br>
+
+**We tackled a box on TryHackMe labeled as EASY. At first, during enumeration, we came across a "Submit Feedback" form. Now, based on what we’ve seen searching around, feedback forms are often vulnerable to XSS, so we started testing it out.**
+
+**But guess what? No luck initially no errors, no responses, nothing that screamed XSS was working. So, we didn’t stop there. We switched gears, tried different techniques, and eventually confirmed something interesting the application was vulnerable to blind XSS!**
+
+**From there, we got to work crafting payloads, testing them one by one, and tweaking things until we hit the jackpot. Finally, we managed to pull out the string from `flag.txt` hidden in the target server. It wasn’t easy, but persistence paid off, and we grabbed the flag. Enjoy reading, peace out ✌️**
 
 
 - Example of web applications and web pages where blind XSS attacks can occur:
