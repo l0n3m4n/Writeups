@@ -192,6 +192,7 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 
 ```
 ## Checking submit request 
+> found a URL submit form that can ping my own IP or host, an indication of potential vulnerabilities in the application. 
 ![responce](response.png)
 ![parameter](parameter.png)
 
