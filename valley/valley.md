@@ -271,7 +271,7 @@ valleyDev@valley:/home$
 ## Structure information
 ![readelf](readelf.png)
 
-## Decompress ELF
+## Decompressing binary
 > After disassembling the binary file, I discovered that the executable was packed and compressed. So, I decided to decompress it using UPX.
 ![upx](upx.png)
 
