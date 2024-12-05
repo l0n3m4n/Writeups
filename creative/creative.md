@@ -197,11 +197,30 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 ![parameter](parameter.png)
 
 ## Possible vulnerabilities
-- **SSRF** 
-- **Command Injection** 
-- **LFI**
-- **SQL Injection**
-- **XSS** 
+- **SSRF (Server-Side Request Forgery)**: Forces a server to make unauthorized requests to internal or external systems.
+  ```bash
+  # URL 
+  GET /fetch?url=http://localhost/admin
+  ```
+- **Command Injection**: Injects malicious commands into system-level command execution.
+  ```bash
+  # user input
+   ping google.com; rm -rf /
+  ```
+- **LFI (local file inclusion**: Includes unauthorized files from the server, exposing sensitive data.
+  ```bash
+  GET /index.php?file=../../etc/passwd
+  ```
+- **SQL Injection**: Manipulates SQL queries to access, modify, or delete database data.
+  ```bash
+  # request paramater
+  SELECT * FROM users WHERE username = 'admin' OR '1'='1';
+  ```
+- **XSS**: Injects malicious scripts into web pages to target other users.
+  ```bash
+  # submit form
+  <script>alert('XSS');</script>
+  ```
 
 ## Checking SSRF 
 ```bash
