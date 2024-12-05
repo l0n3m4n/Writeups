@@ -8,7 +8,7 @@
 $ curl -sI 10.10.82.1
 HTTP/1.1 301 Moved Permanently
 Server: nginx/1.18.0 (Ubuntu)
-Date: Thu, 05 Dec 2024 03:34:00 GMT
+Date: Redacted
 Content-Type: text/html
 Content-Length: 178
 Connection: keep-alive
