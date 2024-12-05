@@ -285,7 +285,7 @@ password = liberty123
 ```
 ![hash](hash.png)
 
-## Cronsjobs (module hijacking
+## Cronsjobs 
 I didn't find anything useful in the LinPEAS results, so I decided to check the cron jobs instead. Here's what I found: there's a script that imports the base64 module, and the permissions on the base64 file allow read, write, and execute. I think we might be able to insert a reverse shell because photoEncrypt.py imports the module, and the script runs every few seconds as part of a cron job.
 
 ![crons](crons.png)
