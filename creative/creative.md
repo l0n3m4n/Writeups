@@ -201,7 +201,7 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 
 ```
 ## Checking submit request 
-> I found a URL submit form that can send a GET request to my own IP or host, which could indicate potential vulnerabilities in the application.
+> found a URL submit form that can send a GET request to my own IP or host, which could indicate potential vulnerabilities in the application.
 ![responce](response.png)
 ![parameter](parameter.png)
 
