@@ -2,6 +2,15 @@
 
 <br>
 
+**This box on TryHackMe was labeled as easy. From the start, we began with reconnaissance on the front-end page, debugging the backend, performing enumeration, and fuzzing. During fuzzing, using the `ffuf` tool, we discovered a subdomain `beta`. Upon  checking the site on this subdomain revealed a URL checker form.**
+
+**Digging deeper into debugging, we identified a possible vulnerability specifically SSRF and LFI. While investigating further, we accidentally confirmed the presence of SSRF, as we were able to make requests to internal services using port 1337. This led us to access sensitive files, including the private key of the saad user. Using this, we gained initial access to the machine.**
+
+**Moving forward as the saad user, we found a potential escalation path to root. At first, I suspected the binary `at` could be exploited, but after further investigation, I realized that the `at` binary was a member of the `daemon` group, Using LinPEAS for deeper analysis, we identified a misconfigured shared library `LD_PRELOAD`. Exploiting this misconfiguration granted us root access.**
+
+
+<br>
+
 ![recon1](recon1.png)
 ## Debugging Contents 
 ```bash
