@@ -110,11 +110,7 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 
 ```
 ![burp](burp.png)
-
-## WebDAV Input Validation Vulnerability
-A lack of input validation vulnerability occurs when user inputs are not properly sanitized or filtered, allowing attackers to inject malicious data or commands that can be executed by the server.
-
-In a typical WebDAV setup, a file upload functionality might not properly validate file types, file names, or contents. An attacker could exploit this vulnerability by uploading a malicious file (e.g., a PHP web shell or a file with a dangerous extension) to execute arbitrary code on the server.
+ 
 
 ## Methodology
 The first step in identifying input validation vulnerabilities is to gather information about the target system:
