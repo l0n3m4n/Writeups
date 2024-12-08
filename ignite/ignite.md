@@ -1,4 +1,5 @@
 <br>
+
 ![ignite](logo.png)
 
 **This box was marked as an easy box on `TryHackMe`. We started with a recon on the contents and found a login page with default credentials. That's where we began digging around and identified that the system was using `Fuel CMS`, version 1.4, which is vulnerable to `RCE`. We then crafted our own exploit because some of the existing PoC on GitHub didn't work, and we felt more comfortable creating our own. After gaining initial access, we enumerated the system and discovered a hardcoded password, which turned out to be the root password. With that, we successfully compromised the box in just a few minutes. enjoy reading :)**
