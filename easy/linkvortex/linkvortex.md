@@ -1,5 +1,6 @@
 ![logo](logo.jpeg)
 
+
 <br>
 
 This box on Hack The Box was labeled "easy," so I started with enumeration focusing on hidden files, contents, and subdomains since the nmap scan results were minimal. During subdomain enumeration, I discovered a hidden .git directory. Using the git-dumper tool, I dumped the repository and began analyzing its contents, looking for useful information.
@@ -13,6 +14,7 @@ Gaining privilege escalation on this machine is pretty straightforward. During o
 
 <br>
 <br>
+
 
 ![recon1](recon1.png)
 ![sitemap](sitemap.png)
