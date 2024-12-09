@@ -5,7 +5,7 @@
 
 This box on Hack The Box was labeled "easy," so I started with enumeration focusing on hidden files, contents, and subdomains since the nmap scan results were minimal. During subdomain enumeration, I discovered a hidden .git directory. Using the git-dumper tool, I dumped the repository and began analyzing its contents, looking for useful information.
 
-Eventually, I found some passwords, including one for the admin user, but they were useless without the corresponding usernames. Continuing my investigation in the dumped files, I identified the exact version of the Ghost CMS being used. It was version 5.59.0,  which is known to have a vulnerability that allows authenticated users to upload malicious symlinks files.
+Eventually, I found some passwords, including one for the admin user, but they were useless without the corresponding usernames. Continuing my investigation in the dumped files, I identified the exact version of the Ghost CMS being used. It was version v5.58.0,  which is known to have a vulnerability that allows authenticated users to upload malicious symlinks files.
 
 Next, I searched for a proof-of-concept exploit and quickly found one shared by the box creator on their GitHub account. I modified the exploit, aiming for Remote Code Execution (RCE). However, the vulnerability only allowed arbitrary file reads, as authenticated users could upload symlinks, leading to arbitrary file read vulnerabilities. While it didn't lead directly to RCE, we can leveraged the exploit chain to extract the user's SSH private key. Eventually, after examining configuration files, I obtained the SSH credentials, granting me initial access.
 
