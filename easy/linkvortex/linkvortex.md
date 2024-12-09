@@ -1,6 +1,17 @@
 ![logo](logo.jpeg)
 
 <br>
+
+This box on Hack The Box was labeled "easy," so I started with enumeration focusing on hidden files, contents, and subdomains since the nmap scan results were minimal. During subdomain enumeration, I discovered a hidden .git directory. Using the git-dumper tool, I dumped the repository and began analyzing its contents, looking for useful information.
+
+Eventually, I found some passwords, including one for the admin user, but they were useless without the corresponding usernames. Continuing my investigation in the dumped files, I identified the exact version of the Ghost CMS being used. It was version 5.59.0,  which is known to have a vulnerability that allows authenticated users to upload malicious symlinks files.
+
+Next, I searched for a proof-of-concept exploit and quickly found one shared by the box creator on their GitHub account. I modified the exploit, aiming for Remote Code Execution (RCE). However, the vulnerability only allowed arbitrary file reads, as unauthenticated users could upload symlinks, leading to arbitrary file read vulnerabilities. While it didn't lead directly to RCE, we can leveraged the exploit chain to extract the user's SSH private key. Eventually, after examining configuration files, I obtained the SSH credentials, granting me initial access.
+
+Gaining privilege escalation on this machine is pretty straightforward. During our enumeration inside on target machine, we found a misconfigured environment variable, env_keep+=CHECK_CONTENT, that we can take advantage of. By setting up our own symbolic links and using this variable, we’re able to extract the root’s private SSH key.
+
+
+<br>
 <br>
 
 ![recon1](recon1.png)
