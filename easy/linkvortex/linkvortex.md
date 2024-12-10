@@ -1,4 +1,4 @@
-![logo](logo.jpeg)
+![logo](linkvortex.png)
 
 
 <br>
