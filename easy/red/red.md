@@ -21,7 +21,7 @@ $ nmap -sC -sV -Pn -vv $(nmap --min-rate=10000 -T4 -p- red.thm | grep '^[0-9]' |
 
 Nmap scan report for red.thm (10.10.201.142)
 Host is up, received user-set (0.35s latency).
-Scanned at 2024-12-21 23:17:57 PST for 20s
+Scanned at Redacted PST for 20s
 Not shown: 998 closed tcp ports (reset)
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
