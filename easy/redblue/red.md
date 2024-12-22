@@ -420,7 +420,7 @@ Payload size: 123 bytes
 Final size of elf file: 207 bytes
 ```
 ## Uploading backdoor 
-"I also created a script that automatically logs in and uploads the backdoor whenever we get the new password for the blue user, since the connection keeps dropping every few random seconds."
+"I also created a script that automatically login and uploads the backdoor whenever we get the new password for the blue user, since the connection keeps dropping every few random seconds."
 ```bash
 $ python3 -m venv venv-ssh && source venv-ssh/bin/activate
 $ pip install paramiko 
