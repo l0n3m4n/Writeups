@@ -296,7 +296,7 @@ cat passlist.txt
 rm passlist.txt
 sudo apt-get remove hashcat -y
 ```
-Hashcat is used temporarily to generate possible password candidates before being uninstalled for cleanup purposes.
+The hashcat is used temporarily to generate possible password candidates before being uninstalled for cleanup purposes.
 ```bash
 hashcat --stdout .reminder -r /usr/share/hashcat/rules/best64.rule > passlist.txt
 ```
