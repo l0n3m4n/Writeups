@@ -29,3 +29,4 @@
 - [**THM-Ignite (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/ignite/ignite.md)
 - [**THM-DAV (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/dav/dav.md)
 - [**HTB-Linkvortex (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/linkvortex/linkvortex.md)
+- [**THM-Red (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/redblue/red.md)
