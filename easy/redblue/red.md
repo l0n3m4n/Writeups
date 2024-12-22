@@ -718,7 +718,7 @@ but, during actual penetration testing or hacking, my terminal arrangement is di
 
 - **VPN Monitoring Terminal**: I dedicate one terminal solely to monitoring the THM VPN connection. Sometimes, while playing, we don't realize that the VPN connection has dropped, so having this terminal helps me stay aware.
 
-- **Tunnel Terminals**: I use two terminals specifically for handling tun0. This is because we often forget our VPN IP, and having a terminal for quick reference makes things much easier.
+- **Tunnel Terminals**: The use of second terminals specifically for handling tun0. This is because we often forget our VPN IP, and having a terminal for quick reference makes things much easier.
 
 - **Hosts File Terminal**: Another terminal is reserved for working with the /etc/hosts file. This is particularly useful for quickly mapping the target machine’s IP to a domain name for convenience during the game.
 
