@@ -32,7 +32,8 @@ TwoMillion is an Easy difficulty Linux box that was released to celebrate reachi
 
 
 # Web Application Enumeration
-"In the beginning, let's just click around the front-end of the website since we still have no idea about clicking links and where they will redirect us."
+"In the beginning, let's just explore the front-end of the website since we still have no idea about the web application. After that, we can fire up Nmap."
+
 <br>
 
 ![1](1.png)
