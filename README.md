@@ -31,3 +31,4 @@
 - [**HTB-Linkvortex (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/linkvortex/linkvortex.md)
 - [**THM-Red (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/redblue/red.md)
 - [**HTB-2million (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md)
+- [**THM-Corridor (flag)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md)
