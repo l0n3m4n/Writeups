@@ -2,7 +2,7 @@
 <br>
 
 <div align="center">
-  <img src="logo.jpeg" alt="Corridor Image">
+  <img src="corridor.png" alt="Corridor Image">
 </div>
 
 <br>
