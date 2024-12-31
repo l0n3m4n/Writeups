@@ -69,7 +69,7 @@
       </table>
     </td>
     <td style="vertical-align: top; width: 50%;">
-       $\Huge{\color{lime}{\textsf{HackTheBox}}}$<br><br>
+       <br>$\Huge{\color{lime}{\textsf{HackTheBox}}}$<br><br>
         <table>
         <thead>
           <tr>
