@@ -25,7 +25,7 @@
 <table>
   <tr>
     <td style="vertical-align: top; width: 50%; text-align: center;">
-    $\Huge{\color{red}{\textsf{TryHackMe}}}$<br><br>
+    <br>$\Huge{\color{red}{\textsf{TryHackMe}}}$<br>
       <table>
         <thead>
           <tr>
