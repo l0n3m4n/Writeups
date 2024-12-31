@@ -31,7 +31,7 @@
           <tr>
             <th>Challenge Name</th>
             <th>Type</th>
-            <th>Link</th>
+            <th>Writeup Link</th>
           </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@
           <tr>
             <th>Challenge Name</th>
             <th>Type</th>
-            <th>Link</th>
+            <th>Writeup Link</th>
           </tr>
         </thead>
         <tbody>
