@@ -22,10 +22,10 @@
 </p>
 <br/>
 
+ $\Huge{\color{red}{\textsf{TryHackMe}}}$
 <table>
   <tr>
     <td style="vertical-align: top; width: 50%;">
-    $\Huge{\color{red}{\textsf{TryHackMe}}}$
       <table>
         <thead>
           <tr>
