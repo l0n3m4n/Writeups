@@ -28,7 +28,7 @@
 <div style="display: flex; justify-content: space-between;">
 
   <div style="width: 48%;">
-    <h3>Page 1</h3>
+    <h3>TryHackme</h3>
     <table>
       <thead>
         <tr>
@@ -73,7 +73,7 @@
   </div>
 
   <div style="width: 48%;">
-    <h3>Page 2</h3>
+    <h3>HackTheBox</h3>
     <table>
       <thead>
         <tr>
