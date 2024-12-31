@@ -17,7 +17,7 @@
       <img src="https://img.shields.io/badge/TryHackMe-212C42?logo=tryhackme&logoColor=fff&style=for-the-badge" alt="TryHackme">
    </a>
      <a href="https://www.hackthebox.com">
-  <img src="https://img.shields.io/badge/Hack%20The%20Box-111927?logo=hackthebox&logoColor=9FEF00&style=for-the-badge" alt="Hack The Box">
+  <img src="https://img.shields.io/badge/HackTheBox-111927?logo=hackthebox&logoColor=9FEF00&style=for-the-badge" alt="Hack The Box">
 </a>
 </p>
 <br/>
