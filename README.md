@@ -26,6 +26,7 @@
   <tr>
     <td style="vertical-align: top; width: 50%;">
     $\Huge{\color{lime}{\textsf{HackTheBox}}}$
+        <br>
       <table>
         <thead>
           <tr>
