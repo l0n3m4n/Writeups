@@ -25,7 +25,7 @@
 <table>
   <tr>
     <td style="vertical-align: top; width: 50%;">
-       <h3 style="color: #212C42;">TryHackme</h3>
+       <span style="color: green"> Some green text </span>
       <table>
         <thead>
           <tr>
