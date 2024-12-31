@@ -20,15 +20,17 @@
 <br/>
 
 
-- [**THM-Mustacchio (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/Mustacchio/Mustacchio.md)
-- [**THM-Lookup (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/Lookup/lookup.md)
-- [**THM-Sticker (flag)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/sticker-shop/sticker.md)
-- [**THM-Valley (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/valley/valley.md)
-- [**THM-Ollie (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/medium/ollie/ollie.md)
-- [**THM-Creative (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/creative/creative.md)
-- [**THM-Ignite (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/ignite/ignite.md)
-- [**THM-DAV (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/dav/dav.md)
-- [**HTB-Linkvortex (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/linkvortex/linkvortex.md)
-- [**THM-Red (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/redblue/red.md)
-- [**HTB-2million (boot2root)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md)
-- [**THM-Corridor (flag)**](https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md)
+| Challenge Name | Type | Writeup Link |
+|----------------|------|--------------|
+| THM-Mustacchio | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/Mustacchio/Mustacchio.md) |
+| THM-Lookup | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/Lookup/lookup.md) |
+| THM-Sticker | flag | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/sticker-shop/sticker.md) |
+| THM-Valley | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/valley/valley.md) |
+| THM-Ollie | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/medium/ollie/ollie.md) |
+| THM-Creative | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/creative/creative.md) |
+| THM-Ignite | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/ignite/ignite.md) |
+| THM-DAV | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/dav/dav.md) |
+| HTB-Linkvortex | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/linkvortex/linkvortex.md) |
+| THM-Red | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/redblue/red.md) |
+| HTB-2million | boot2root | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md) |
+| THM-Corridor | flag | [Writeup](https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md) |
