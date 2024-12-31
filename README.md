@@ -25,7 +25,7 @@
 <table>
   <tr>
     <td style="vertical-align: top; width: 50%;">
-       <span style="color: green"> Some green text </span>
+     $\color{lime}{\textsf{HackTheBox}}$  
       <table>
         <thead>
           <tr>
