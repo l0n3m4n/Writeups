@@ -68,9 +68,9 @@
         </tbody>
       </table>
     </td>
-    $\Huge{\color{lime}{\textsf{HackTheBox}}}$
     <td style="vertical-align: top; width: 50%;">
-      <table>
+       $\Huge{\color{lime}{\textsf{HackTheBox}}}$
+        <table>
         <thead>
           <tr>
             <th>Challenge Name</th>
