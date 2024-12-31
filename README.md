@@ -24,7 +24,7 @@
 
 <table>
   <tr>
-    <td style="vertical-align: top; width: 50%; text-align: center;">
+    <td style="vertical-align: top; width: 50%;">
     $\Huge{\color{red}{\textsf{TryHackMe}}}$<br><br>
       <table>
         <thead>
@@ -69,7 +69,7 @@
       </table>
     </td>
     <td style="vertical-align: top; width: 50%;">
-       $\Huge{\color{lime}{\textsf{HackTheBox}}}$
+       $\Huge{\color{lime}{\textsf{HackTheBox}}}$<br><br>
         <table>
         <thead>
           <tr>
