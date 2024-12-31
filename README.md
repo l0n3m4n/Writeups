@@ -1,4 +1,4 @@
-<h1 align="center">🚩 CTF Games 🚩</h1>
+<h1 align="center">🚩 CTF Challenge 🚩</h1>
 <br>
 <p align="center">
     <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fl0n3m4n%tryhackme-rooms">
