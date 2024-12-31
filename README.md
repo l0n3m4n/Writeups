@@ -22,96 +22,95 @@
 </p>
 <br/>
 
-<div style="display: flex; justify-content: space-between;">
-
-  <div style="width: 48%;">
-    <h3>TryHackme</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Challenge Name</th>
-          <th>Type</th>
-          <th>Writeup Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>THM-Mustacchio</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/Mustacchio/Mustacchio.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Lookup</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/Lookup/lookup.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Sticker</td>
-          <td>flag</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/sticker-shop/sticker.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Valley</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/valley/valley.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Ollie</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/ollie/ollie.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Creative</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/creative/creative.md">Writeup</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div style="width: 48%;">
-    <h3>HackTheBox</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Challenge Name</th>
-          <th>Type</th>
-          <th>Writeup Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>THM-Ignite</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/ignite/ignite.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-DAV</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/dav/dav.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>HTB-Linkvortex</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/linkvortex/linkvortex.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Red</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/redblue/red.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>HTB-2million</td>
-          <td>boot2root</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md">Writeup</a></td>
-        </tr>
-        <tr>
-          <td>THM-Corridor</td>
-          <td>flag</td>
-          <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md">Writeup</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</div>
+<table>
+  <tr>
+    <td style="vertical-align: top; width: 50%;">
+      <h3>TryHackme</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge Name</th>
+            <th>Type</th>
+            <th>Writeup Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>THM-Mustacchio</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/Mustacchio/Mustacchio.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Lookup</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/Lookup/lookup.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Sticker</td>
+            <td>flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/sticker-shop/sticker.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Valley</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/valley/valley.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Ollie</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/ollie/ollie.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Creative</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/creative/creative.md">Writeup</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <h3>HackTheBox</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Challenge Name</th>
+            <th>Type</th>
+            <th>Writeup Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>THM-Ignite</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/ignite/ignite.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-DAV</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/dav/dav.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>HTB-Linkvortex</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/linkvortex/linkvortex.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Red</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/redblue/red.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>HTB-2million</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md">Writeup</a></td>
+          </tr>
+          <tr>
+            <td>THM-Corridor</td>
+            <td>flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md">Writeup</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>
