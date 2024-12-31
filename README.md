@@ -68,8 +68,8 @@
         </tbody>
       </table>
     </td>
+    $\Huge{\color{lime}{\textsf{HackTheBox}}}$
     <td style="vertical-align: top; width: 50%;">
-     $\Huge{\color{lime}{\textsf{HackTheBox}}}$
       <table>
         <thead>
           <tr>
