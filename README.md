@@ -65,6 +65,11 @@
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/creative/creative.md">Writeup</a></td>
           </tr>
+          <tr>
+            <td>THM-Corridor</td>
+            <td>flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md">Writeup</a></td>
+          </tr>
         </tbody>
       </table>
     </td>
@@ -105,10 +110,10 @@
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md">Writeup</a></td>
           </tr>
           <tr>
-            <td>THM-Corridor</td>
-            <td>flag</td>
-            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md">Writeup</a></td>
-          </tr>
+            <td>HTB-Alert</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/alert/alert.md">Writeup</a></td>
+          </tr> 
         </tbody>
       </table>
     </td>
