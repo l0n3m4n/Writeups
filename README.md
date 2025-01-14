@@ -70,6 +70,12 @@
             <td>flag</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/corridor/corridor.md">Writeup</a></td>
           </tr>
+             <tr>
+            <td>THM-Lottie</td>
+            <td>Walkthroughs</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/lottie/lottie.md">Writeup</a></td>
+          </tr>
+            
         </tbody>
       </table>
     </td>
