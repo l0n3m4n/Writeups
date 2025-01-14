@@ -1,0 +1,10 @@
+{
+    "name": "form-validator",
+    "version": "1.1.0",
+    "description": "A simple package to validate form fields",
+    "main": "index.js",
+    "scripts": {},
+    "keywords": ["validation", "form", "validator"],
+    "author": "THM Package",
+    "license": "MIT"
+}
