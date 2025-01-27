@@ -119,6 +119,11 @@
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/alert/alert.md">Writeup</a></td>
           </tr> 
+             <tr>
+            <td>THM-Smol</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/smol/smol.md">Writeup</a></td>
+          </tr> 
         </tbody>
       </table>
     </td>
