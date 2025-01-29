@@ -1,0 +1,6 @@
+(1, 'admin', '$P$Bvi8BHb84pjY/Kw0RWsOXUXsQ1aACL1', 'admin', 'admin@smol.thm', 'http://192.168.204.139', '2023-08-16 06:58:30', '', 0, 'admin'),
+(2, 'wpuser', '$P$BfZjtJpXL9gBwzNjLMTnTvBVh2Z1/E.', 'wp', 'wp@smol.thm', 'http://smol.thm', '2023-08-16 11:04:07', '', 0, 'wordpress user'),
+(3, 'think', '$P$B0jO/cdGOCZhlAJfPSqV2gVi2pb7Vd/', 'think', 'josemlwdf@smol.thm', 'http://smol.thm', '2023-08-16 15:01:02', '', 0, 'Jose Mario Llado Marti'),
+(4, 'gege', '$P$BsIY1w5krnhP3WvURMts0/M4FwiG0m1', 'gege', 'gege@smol.thm', 'http://smol.thm', '2023-08-17 20:18:50', '', 0, 'gege'),
+(5, 'diego', '$P$BWFBcbXdzGrsjnbc54Dr3Erff4JPwv1', 'diego', 'diego@smol.thm', 'http://smol.thm', '2023-08-17 20:19:15', '', 0, 'diego'),
+(6, 'xavi', '$P$BvcalhsCfVILp2SgttADny40mqJZCN/', 'xavi', 'xavi@smol.thm', 'http://smol.thm', '2023-08-17 20:20:01', '', 0, 'xavi');

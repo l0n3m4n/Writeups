@@ -1,0 +1,19 @@
+== Steps to update the plugin ==
+
+Download latest jmol from Sourceforge
+	https://sourceforge.net/projects/jmol/
+
+Expand jsmol.zip
+Copy 
+	j2s directory 
+	php directory
+	JSmol.min.js
+	JSmol.min.nojq.js
+	idioma
+
+to the plugin's root directory. Not sure if all are needed. idioma provides internationalization of the jsmol window
+ 
+Test on local wp installations.
+
+== Internationalization ==
+Most of the internationalization is done within the jsmol window by Bob Hansen's code. 
