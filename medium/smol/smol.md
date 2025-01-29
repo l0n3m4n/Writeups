@@ -3,7 +3,7 @@
 <br>
 <br>
 
-This TryHackMe medium-difficulty box was quite an experience! At first, we just explored the website since we had no clear idea of the vulnerability. Looking back at the hint, the creator mentioned LFI (Local File Inclusion) in a WordPress plugin and another backdoor plugin `holly dolly` to gain RCE (Remote Code Execution). Privilege escalation, on the other hand, had to be done manually.
+This TryHackMe medium-difficulty box was quite an experience! At first, we just explored the website since we had no clear idea of the vulnerability. The creator mentioned LFI (Local File Inclusion) in a WordPress plugin and another backdoor plugin `holly dolly` to gain RCE (Remote Code Execution). Privilege escalation, on the other hand, had to be done manually.
 
 We followed the proper phases: scanning, enumeration, vulnerability identification, and gaining an initial foothold. This box stood out because it required a lot of deep exploration of the target machine using commands like find, grep, piping, and other Linux techniques. I also included data exfiltration techniques, which are quite effective in real-world engagements. One method is exfiltration via ICMP requests, which helps bypass traditional firewalls and intrusion detection systems by sending data in small chunks your can check out Atomic Red Team - T1048.003, which covers this technique in detail.
 
