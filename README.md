@@ -128,7 +128,7 @@
              <tr>
             <td>THM-Lo-Fi</td>
             <td>flag</td>
-            <td><a href=" https://github.com/l0n3m4n/Writeups/blob/main/easy/lofi/lofi.md">Writeup</a></td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/lofi/lofi.md">Writeup</a></td>
           </tr> 
         </tbody>
       </table>
