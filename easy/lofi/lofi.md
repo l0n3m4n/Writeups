@@ -1,9 +1,9 @@
 
 ## Reconnaissance
 ### Front-End Recon
-![banner](/img/banner.png)
-![relax](/img/relax.png)
-![hint](/img/hint.png)
+![banner](banner.png)
+![relax](relax.png)
+![hint](hint.png)
 
 ### Adding Hostfile
 ```bash
@@ -70,7 +70,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 * closing connection #0
 ```
 ### Technology Stack Identification
-![stack](/img/stack.png)
+![stack](stack.png)
 ### Directory and File Listings
 ```bash
 > ./katana -u http://lofi.thm
@@ -126,7 +126,7 @@ Parameters tested: 1
 Requests sent: 38
 Vulnerabilities found: 3
 ```
-![acces_log](/img/access_log.png)
+![acces_log](access_log.png)
 ## Exploitation
 ```bash
 
@@ -155,7 +155,7 @@ libuuid:x:100:101::/var/lib/libuuid:/bin/sh
 						flag{e4478e0eab69bd642b8238765dcb7d18}                	</div>
 ```
 ## Relected XSS
-![xss](/img/reflected-xss.png)
+![xss](reflected-xss.png)
 ## LFI to RCE
 > file descriptors
 ```bash
@@ -215,6 +215,6 @@ $ curl -s http://lofi.thm/?page=../../../../proc/self/fd/6 | grep -w '200' | hea
 172.17.0.2:80 127.0.0.1 - - [31/Jan/2025:03:27:11 +0000] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.2.22 (Ubuntu) (internal dummy connection)"
 ```
 ### Flags
-![flags](/img/flag.png)
+![flags](flag.png)
 
  
