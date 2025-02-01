@@ -3,7 +3,7 @@
 <br>
 <br>
 
-The Lo-Fi box on TryHackMe is marked as "Easy" and is vulnerable to LFI, which we used to extract `flag.txt`. It’s also vulnerable to LFI to RCE via log poisoning, but we couldn’t actually get RCE to work at the exploit at this point. So, we just stopped there since we already got the flag.
+The Lo-Fi box on TryHackMe is marked as "Easy" and is vulnerable to LFI, which we used to extract `flag.txt`. It’s also vulnerable to LFI to RCE via log poisoning, but we couldn’t actually get RCE to work the exploit at this point. So, we just stopped there since we already got the flag.
 
 <br>
 
