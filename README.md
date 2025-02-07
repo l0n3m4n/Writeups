@@ -141,7 +141,6 @@
             <td>flag</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/lumberjack/lumberjack.md">Writeup</a></td>
           </tr> 
-          
         </tbody>
       </table>
     </td>
