@@ -86,6 +86,11 @@
             <td>Challenge</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/hard/dailybugle/dailybugle.md">Writeup</a></td>
           </tr>
+               <tr>
+            <td>THM-Compiled</td>
+            <td>Flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/compiled/compiled.md">Writeup</a></td>
+          </tr>
         </tbody>
       </table>
     </td>
