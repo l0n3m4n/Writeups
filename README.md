@@ -90,7 +90,12 @@
             <td>THM-Compiled</td>
             <td>Flag</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/compiled/compiled.md">Writeup</a></td>
-          </tr>
+          </tr> 
+              <tr>
+            <td>THM-MagnusBilling</td>
+            <td>Flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/magnusbilling/billing.md">Writeup</a></td>
+          </tr> 
         </tbody>
       </table>
     </td>
