@@ -5,7 +5,7 @@
 # Real-World Scenario: Bit-Flipping Attack on CBC Mode
 
 Let’s consider an authenticated encryption vulnerability in a system using CBC mode without integrity protection (e.g., no HMAC or message authentication code). An attacker can exploit this by flipping bits in the ciphertext, which will result in specific changes to the plaintext when decrypted.
-Scenario:
+## Scenario:
 
 Imagine a web application that uses encryption to protect user login information (username and password). If the application is vulnerable to a bit-flipping attack, an attacker might intercept the encrypted data (e.g., the ciphertext) and modify it.
 
