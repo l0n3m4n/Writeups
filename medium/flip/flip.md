@@ -23,7 +23,10 @@ VALUES ('johndoe', crypt('mySecretPassword', gen_salt('bf')));
 
 -- Verify login (check password)
 SELECT username FROM users WHERE username = 'johndoe' AND crypt('mySecretPassword', password) = password;
-
+```
+- The user's encrypted data (cipher) :
+```
+2967bbf26f408ab8a2d27ad55f97b846f51fd2093970f1011789f346877cfb34515c382c7717570b74d6885c3d545c49
 ```
 - Where the first part (IV) is the Initialization Vector (typically 16 bytes), and the second part is the ciphertext corresponding to the actual user data (username and password, for example).
 
