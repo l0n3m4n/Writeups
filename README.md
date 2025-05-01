@@ -174,7 +174,7 @@
               <tr>
             <td>THM-hijack(undone)</td>
             <td>boot2root</td>
-            <td><a href="">Writeup</a></td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/hijack/hijack.md">Writeup</a></td>
           </tr> 
         </tbody>
       </table>
