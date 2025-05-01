@@ -11,7 +11,7 @@ Imagine a web application that uses encryption to protect user login information
 
 For example, consider the following:
 
-- The user’s decrypted data (plaintext) :
+- The user’s exmaple decrypted data (plaintext) :
 ```sql
 -- Create pgcrypto extension and users table
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
@@ -24,7 +24,7 @@ VALUES ('johndoe', crypt('mySecretPassword', gen_salt('bf')));
 -- Verify login (check password)
 SELECT username FROM users WHERE username = 'johndoe' AND crypt('mySecretPassword', password) = password;
 ```
-- The user's encrypted data (cipher) :
+- The user's example encrypted data (ciphertext) :
 ```
 2967bbf26f408ab8a2d27ad55f97b846f51fd2093970f1011789f346877cfb34515c382c7717570b74d6885c3d545c49
 ```
