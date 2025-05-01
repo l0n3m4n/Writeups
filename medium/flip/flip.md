@@ -11,7 +11,7 @@ Imagine a web application that uses encryption to protect user login information
 
 For example, consider the following:
 
-- The user’s exmaple decrypted data (plaintext) :
+- The user’s example decrypted data (plaintext) :
 ```sql
 -- Create pgcrypto extension and users table
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
