@@ -96,6 +96,11 @@
             <td>Flag</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/magnusbilling/billing.md">Writeup</a></td>
           </tr> 
+           <tr>
+            <td>THM-U.A High School</td>
+            <td>Flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/U.A/U.A.md">Writeup</a></td>
+          </tr>
         </tbody>
       </table>
     </td>
