@@ -198,7 +198,7 @@ Content-Type: text/html; charset=UTF-8
 
 <br>
 
-After testing all the possible vulnerabilities I had listed, I started fuzzing parameters and eventually tried `id` as a parameter.
+After testing all the possible vulnerabilities I had listed, I tried fuzzing parameters and eventually tried `id` as a parameter.
 That’s when I got an interesting response: it returned something like cmd? which caught my attention hmmp.
 
 I started thinking it through and searched around a bit. Then it hit me—it might be vulnerable to command injection. So I tried adding `cmd=whoami and cmd=id` to the URL.
