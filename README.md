@@ -25,7 +25,7 @@
 <table>
   <tr>
     <td style="vertical-align: top; width: 50%;">
-    <br>$\Huge{\color{red}{\textsf{TryHackMe}}}$<br><br>
+    <br><strong>TryHackMe</strong><br><br>
       <table>
         <thead>
           <tr>
@@ -100,7 +100,7 @@
       </table>
     </td>
     <td style="vertical-align: top; width: 50%;">
-       <br>$\Huge{\color{lime}{\textsf{HackTheBox}}}$<br><br>
+       <br><strong>HackTheBox</strong><br><br>
         <table>
         <thead>
           <tr>
