@@ -114,7 +114,7 @@ Content-Type: text/html; charset=UTF-8
 
 # Vulnerability Analysis
 
-## A blank PHP page might still have underlying functionality that can be exploited. Here are possible vulnerabilities to consider:
+### A blank PHP page might still have underlying functionality that can be exploited. Here are possible vulnerabilities to consider:
 ### Parameter Injection
 
 | Number | Vulnerability                      | Uses Parameter Injection?  | Notes                                   |
