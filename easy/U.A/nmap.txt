@@ -1,0 +1,17 @@
+# Nmap 7.94SVN scan initiated Thu Jun  5 11:53:28 2025 as: /usr/lib/nmap/nmap --privileged -sC -sV -p22,80, -oN nmap.txt 10.10.23.180
+Nmap scan report for 10.10.23.180
+Host is up (0.31s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.13 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 d0:59:8b:3a:f1:b2:56:4b:3a:cb:9a:61:4f:f8:50:08 (RSA)
+|   256 58:db:2d:75:ab:a3:d6:51:12:8c:7c:80:cb:e1:dd:e3 (ECDSA)
+|_  256 aa:56:03:8d:65:db:0e:2f:70:c6:0c:c0:34:24:77:98 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: U.A. High School
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jun  5 11:53:47 2025 -- 1 IP address (1 host up) scanned in 19.48 seconds

