@@ -97,7 +97,7 @@
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/magnusbilling/billing.md">Writeup</a></td>
           </tr> 
            <tr>
-            <td>THM-U.A High School</td>
+            <td>THM-U.A HS</td>
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/U.A/U.A.md">Writeup</a></td>
           </tr>
@@ -177,7 +177,7 @@
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/flip/flip.md">Writeup</a></td>
           </tr> 
               <tr>
-            <td>THM-hijack(undone)</td>
+            <td>THM-hijack(nd</td>
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/hijack/hijack.md">Writeup</a></td>
           </tr> 
