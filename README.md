@@ -177,7 +177,7 @@
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/flip/flip.md">Writeup</a></td>
           </tr> 
               <tr>
-            <td>THM-hijack(nd</td>
+            <td>THM-hijack(un-d)</td>
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/hijack/hijack.md">Writeup</a></td>
           </tr> 
