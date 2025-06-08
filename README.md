@@ -98,7 +98,7 @@
           </tr> 
            <tr>
             <td>THM-U.A High School</td>
-            <td>Flag</td>
+            <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/U.A/U.A.md">Writeup</a></td>
           </tr>
         </tbody>
