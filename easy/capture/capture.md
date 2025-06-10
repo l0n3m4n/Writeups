@@ -518,7 +518,6 @@ python3 bruteforce.py -U usernamess.txt -P password.txt -u http://target.thm/log
 [*] Valid username found: [redacted]. 
 
 [*] Press Enter to continue or press Ctrl+C to stop.
-[*] Press Enter when your ready to continue the brute-forcing of the password.
 
 [*] CAPTCHA detected: 565 + 33
 [*] Solving CAPTCHA for password: [redacted] -> 598
