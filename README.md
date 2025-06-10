@@ -101,6 +101,11 @@
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/U.A/U.A.md">Writeup</a></td>
           </tr>
+           <tr>
+            <td>THM-Capture</td>
+            <td>flag</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/capture/capture.md">Writeup</a></td>
+          </tr>
         </tbody>
       </table>
     </td>
