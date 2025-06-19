@@ -29,6 +29,7 @@ Here, we discovered a misconfigured Squid proxy, which could potentially lead to
 ### Fingerprinting Web Servers
 ![clue](clue.png)
 
+## 💡 Tips 
 when you see a TTL (Time To Live) value of 63 in a ping or traceroute response, it's a strong indicator that the responding system is running a Linux-based OS.
 
 ```bash
