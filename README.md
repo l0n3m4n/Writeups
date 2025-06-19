@@ -146,7 +146,7 @@
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/2mil/2mil.md">Writeup</a></td>
           </tr>
           <tr>
-            <td>HTB-Alert</td>
+            <td>HTB-Alert(un-d)</td>
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/alert/alert.md">Writeup</a></td>
           </tr> 
