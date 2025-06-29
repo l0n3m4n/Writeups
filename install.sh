@@ -2,18 +2,14 @@
 
 # Automated Installation Script (CTF)
 
-# === Export github API ===
 # export GITHUB_TOKEN="your_token_here"
 
-
-# === Colors ===
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[1;34m'
 NC='\033[0m'
 
-# === Root Check ===
 if [[ $EUID -ne 0 ]]; then
     echo -e "\n${RED}[!] Please run this script as root (use sudo).${NC}\n"
     exit 1
@@ -22,7 +18,6 @@ fi
 echo -e "\n${BLUE}[*] Starting tool installation process...${NC}\n"
 apt update -y
 
-# === Tools to install ===
 REQUIRED_TOOLS=(
   "seclists"
   "jq"
@@ -33,13 +28,11 @@ REQUIRED_TOOLS=(
   "flameshot"
   "lsd"
 )
-
-# === Check if installed ===
+ 
 is_installed() {
     dpkg -s "$1" &> /dev/null
 }
-
-# === Clone GitHub repo ===
+  
 install_from_github_repo() {
     local tool="$1"
     local repo="$2"
@@ -62,7 +55,7 @@ install_from_github_repo() {
     fi
 }
 
-# === Search GitHub for tool with rate-limit and token support ===
+# Search GitHub for tool with rate-limit and token support 
 search_github_repo() {
     local tool="$1"
     local api_url="https://api.github.com/search/repositories?q=$tool+in:name&sort=stars&order=desc"
@@ -101,7 +94,6 @@ search_github_repo() {
     fi
 }
 
-# === Main loop ===
 for tool in "${REQUIRED_TOOLS[@]}"; do
     echo -e "${YELLOW}[*] Checking $tool...${NC}"
 
