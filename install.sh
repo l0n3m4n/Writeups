@@ -30,6 +30,7 @@ REQUIRED_TOOLS=(
   "gobuster"
   "feroxbuster"
   "katana"
+  "flameshot"
   # Add more tools here...
 )
 
