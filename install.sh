@@ -31,7 +31,7 @@ REQUIRED_TOOLS=(
   "feroxbuster"
   "katana"
   "flameshot"
-  # Add more tools here...
+  "lsd"
 )
 
 # === Check if installed ===
