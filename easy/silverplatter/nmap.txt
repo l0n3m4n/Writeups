@@ -1,0 +1,75 @@
+# Nmap 7.95 scan initiated Sun Jun 29 00:14:27 2025 as: /usr/lib/nmap/nmap --privileged -sC -sV -p22,80,8080 -oN nmap.txt 10.10.252.132
+Nmap scan report for 10.10.252.132
+Host is up (0.27s latency).
+
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 1b:1c:87:8a:fe:34:16:c9:f7:82:37:2b:10:8f:8b:f1 (ECDSA)
+|_  256 26:6d:17:ed:83:9e:4f:2d:f6:cd:53:17:c8:80:3d:09 (ED25519)
+80/tcp   open  http       nginx 1.18.0 (Ubuntu)
+|_http-title: Hack Smarter Security
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+8080/tcp open  http-proxy
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 404 Not Found
+|     Connection: close
+|     Content-Length: 74
+|     Content-Type: text/html
+|     Date: Sun, 29 Jun 2025 04:15:01 GMT
+|     <html><head><title>Error</title></head><body>404 - Not Found</body></html>
+|   GenericLines, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SMBProgNeg, SSLSessionReq, Socks5, TLSSessionReq, TerminalServerCookie: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Length: 0
+|     Connection: close
+|   GetRequest: 
+|     HTTP/1.1 404 Not Found
+|     Connection: close
+|     Content-Length: 74
+|     Content-Type: text/html
+|     Date: Sun, 29 Jun 2025 04:14:59 GMT
+|     <html><head><title>Error</title></head><body>404 - Not Found</body></html>
+|   HTTPOptions: 
+|     HTTP/1.1 404 Not Found
+|     Connection: close
+|     Content-Length: 74
+|     Content-Type: text/html
+|     Date: Sun, 29 Jun 2025 04:15:00 GMT
+|_    <html><head><title>Error</title></head><body>404 - Not Found</body></html>
+|_http-title: Error
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8080-TCP:V=7.95%I=7%D=6/29%Time=6860BDB1%P=x86_64-pc-linux-gnu%r(Ge
+SF:tRequest,C9,"HTTP/1\.1\x20404\x20Not\x20Found\r\nConnection:\x20close\r
+SF:\nContent-Length:\x2074\r\nContent-Type:\x20text/html\r\nDate:\x20Sun,\
+SF:x2029\x20Jun\x202025\x2004:14:59\x20GMT\r\n\r\n<html><head><title>Error
+SF:</title></head><body>404\x20-\x20Not\x20Found</body></html>")%r(HTTPOpt
+SF:ions,C9,"HTTP/1\.1\x20404\x20Not\x20Found\r\nConnection:\x20close\r\nCo
+SF:ntent-Length:\x2074\r\nContent-Type:\x20text/html\r\nDate:\x20Sun,\x202
+SF:9\x20Jun\x202025\x2004:15:00\x20GMT\r\n\r\n<html><head><title>Error</ti
+SF:tle></head><body>404\x20-\x20Not\x20Found</body></html>")%r(RTSPRequest
+SF:,42,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Length:\x200\r\nConn
+SF:ection:\x20close\r\n\r\n")%r(FourOhFourRequest,C9,"HTTP/1\.1\x20404\x20
+SF:Not\x20Found\r\nConnection:\x20close\r\nContent-Length:\x2074\r\nConten
+SF:t-Type:\x20text/html\r\nDate:\x20Sun,\x2029\x20Jun\x202025\x2004:15:01\
+SF:x20GMT\r\n\r\n<html><head><title>Error</title></head><body>404\x20-\x20
+SF:Not\x20Found</body></html>")%r(Socks5,42,"HTTP/1\.1\x20400\x20Bad\x20Re
+SF:quest\r\nContent-Length:\x200\r\nConnection:\x20close\r\n\r\n")%r(Gener
+SF:icLines,42,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Length:\x200\
+SF:r\nConnection:\x20close\r\n\r\n")%r(Help,42,"HTTP/1\.1\x20400\x20Bad\x2
+SF:0Request\r\nContent-Length:\x200\r\nConnection:\x20close\r\n\r\n")%r(SS
+SF:LSessionReq,42,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Length:\x
+SF:200\r\nConnection:\x20close\r\n\r\n")%r(TerminalServerCookie,42,"HTTP/1
+SF:\.1\x20400\x20Bad\x20Request\r\nContent-Length:\x200\r\nConnection:\x20
+SF:close\r\n\r\n")%r(TLSSessionReq,42,"HTTP/1\.1\x20400\x20Bad\x20Request\
+SF:r\nContent-Length:\x200\r\nConnection:\x20close\r\n\r\n")%r(Kerberos,42
+SF:,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Length:\x200\r\nConnect
+SF:ion:\x20close\r\n\r\n")%r(SMBProgNeg,42,"HTTP/1\.1\x20400\x20Bad\x20Req
+SF:uest\r\nContent-Length:\x200\r\nConnection:\x20close\r\n\r\n")%r(LPDStr
+SF:ing,42,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Length:\x200\r\nC
+SF:onnection:\x20close\r\n\r\n")%r(LDAPSearchReq,42,"HTTP/1\.1\x20400\x20B
+SF:ad\x20Request\r\nContent-Length:\x200\r\nConnection:\x20close\r\n\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jun 29 00:16:13 2025 -- 1 IP address (1 host up) scanned in 106.80 seconds
