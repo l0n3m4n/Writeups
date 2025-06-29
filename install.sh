@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Automated Installation Script (CTF)
 
 # === Export github API ===
 # export GITHUB_TOKEN="your_token_here"
