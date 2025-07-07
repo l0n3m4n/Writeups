@@ -1,6 +1,6 @@
 
 ### Fuzzing API endpoint 
-Addmin ThreadPoolExecutor for more faster scanning it only takes 1m 19s see below, and set port start from 1 to 5000 
+Added ThreadPoolExecutor for faster scanning. The current scan (ports 1 to 5000) only takes 1 minute and 19 seconds
 ```py
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
