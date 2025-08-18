@@ -987,7 +987,8 @@ listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
 13:39:03.070697 IP 10.23.93.75 > breakme.thm: ICMP echo reply, id 2436, seq 2, length 64
 ```
 ![tcpdmp](intercept.png)
-
+## Command Injection (Bypass Without Space) 
+- $IFS is a special shell variable called the Internal Field Separator. By default, in many shells, it contains whitespace characters (space, tab, newline). When used in a command, the shell will interpret $IFS as a space. $IFS does not directly work as a separator in commands like ls, wget; use ${IFS} instead.
 ### Lateral movement to john
 
 ```bash
