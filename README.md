@@ -208,7 +208,7 @@
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/easy/cyborg/cyborg.md">Writeup</a></td>
           </tr> 
                 <tr>
-            <td>THM-breakme (un-d)</td>
+            <td>THM-breakme</td>
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/breakme/breakme.md">Writeup</a></td>
           </tr> 
