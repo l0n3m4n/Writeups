@@ -1155,7 +1155,7 @@ UID-based Access Control was being enforced inside the binary using getuid() == 
 ```bash
 > touch testfile.txt && chmod 000 testfile.txt 
 
-```bash
+ 
 > sudo useradd -u 1002 user2
 > grep user2 /etc/passwd
 user2:x:1002:1002::/home/user2:/bin/sh
