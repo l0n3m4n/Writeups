@@ -26,7 +26,6 @@ REQUIRED_TOOLS=(
   "katana"
   "flameshot"
   "lsd"
-  "caido"
 )
  
 is_installed() {
