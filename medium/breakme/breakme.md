@@ -1,25 +1,7 @@
 # Web Hacking Phases
  
 Break this secure system and get the flags, if you can.
-### Front-End Recon
-
-
-
-
-### Fingerprinting Web Servers
-### Inspecting HTTP Response Headers and Sitemaps
-
-
-
-### Debugging Page Content
-### Technology Stack Identification
-### Directory and File Listings
-
-## Vulnerability Analysis
-### Security Testing
-### Enumerating APIs
-### Vulnerability Identification
-
+ 
 
 ## Reconnaissance
 ![cap1](cap1.png)
