@@ -1,4 +1,4 @@
-## Reconnaissance
+W## Reconnaissance
 ![intro](Intro.png)
 ### Front-End Recon
 At first glance, we always explore the frontend webpages by inspecting elements, viewing the source code, and checking extension files. We also look for endpoints by examining headers in the elements.
@@ -253,7 +253,7 @@ Here, we discovered two valuable pieces of data a user's email address and their
 3       Administrator   1       \N      \N      \N      2022-07-23 10:51:25.449364      0       t    \N       \N      Administrator   \N      \N      \N      \N      \N      \N      f       \N      admin@antisoft.thm    f       \N      en_US   \N      \N      \N      f       2022-07-23 10:52:10.087949   \N       \N      1       f       1       \N      \N      \N      contact f       \N      \N      3
 1       t       admin@antisoft.thm              1       3       \N      f       1       \N      \N   2022-07-23 10:52:10.087949       <span data-o-mail-quote="1">-- <br data-o-mail-quote="1">\nAdministrator</span>       $pbkdf2-sha512$12000$lBJiDGHMOcc4Zwwh5Dzn/A$x.EZ/PrEodzEJ5r4JfQo2KsMZLkLT97xWZ3LsMdgwMuK1Ue.YCzfElODfWEGUOc7yYBB4fMt87ph8Sy5tN4nag
 ```
-We identified an email address that could serve as a valid username. Using a previously discovered password, we attempted to log in with these credentials.
+We already identified an email address that could serve as a valid username. Using a previously discovered password, we attempted to log in with these credentials.
 ![userpass](userpass.png)
 
  
