@@ -121,6 +121,11 @@
             <td>boot2root</td>
             <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/umbrella/umbrella.md">Writeup</a></td>
           </tr>
+            <tr>
+            <td>THM-Obscure</td>
+            <td>boot2root</td>
+            <td><a href="https://github.com/l0n3m4n/Writeups/blob/main/medium/obscure/obscure.md">Writeup</a></td>
+          </tr>
         </tbody>
       </table>
     </td>
