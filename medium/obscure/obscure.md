@@ -307,8 +307,6 @@ After uploading the exploit.pickle file, it consistently throws an error. It app
 On some target systems, /dev/tcp is either disabled or Bash lacks support for it. To work around this, we use curl, which is typically available by default on most Linux systems. We also included compatibility with Python 2.7, as earlier attempts encountered errors.
 
 The script will generate a malicious .pickle file. Once created, upload the file and click on "Reverse Database Anonymization" while your Netcat listener is active.
-> python2.7
-
 > python2.7 exploit.py 
 
 ```py
