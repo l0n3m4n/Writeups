@@ -308,6 +308,9 @@ On some target systems, /dev/tcp is either disabled or Bash lacks support for it
 
 The script will generate a malicious .pickle file. Once created, upload the file and click on "Reverse Database Anonymization" while your Netcat listener is active.
 > python2.7
+
+> python2.7 exploit.py 
+
 ```py
 import cPickle
 import base64
