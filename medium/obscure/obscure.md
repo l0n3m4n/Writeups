@@ -240,7 +240,7 @@ that’s Odoo 10, which is end-of-life and full of known exploits
     "pg_version": "9.4"
 }%         
 ```
-Upon closer inspection, we noticed the presence of an Administrator account, which is a potential red flag. For example, by grepping for the username Administrator in the dump, we might be able to retrieve the corresponding password hash.
+Upon closer inspection, we noticed the presence of an Administrator account, which is a potential red flag. By grepping for the username Administrator in the dump, we might be able to retrieve the corresponding password hash.
 ```bash
 ❯ cat dump.sql | grep "username"
 ```
